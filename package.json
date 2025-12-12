@@ -1,0 +1,16 @@
+{
+  "name": "kino-gruppc",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --no-source-map src/main.scss output.css",
+    "watch-sass": "sass --watch --no-source-map src/main.scss output.css"
+  },
+  "dependencies": {
+    "sass": "^1.96.0"
+  }
+}
