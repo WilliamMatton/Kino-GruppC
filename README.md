@@ -21,3 +21,6 @@ figjam: https://www.figma.com/board/A7IJz9a5pRJBq4BiryvEAk/Nya-Kino-sidan?node-i
 
 **Regler för pull requests:**
 - Alla pull requests måste ha minst två reviews för att tillåtas en merge till dev-branch
+
+**Regler för PBI:er som kräver design**
+- PBI:er som kräver design flyttas till "Sprint design" kolumnen i Github-projects när designen görs. När designen är färdig flyttas PBI:en sedan till "Sprint doing" kolumnen.
