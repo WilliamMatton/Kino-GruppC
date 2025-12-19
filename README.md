@@ -2,7 +2,9 @@
 
 **Plats:** Planeten Proxima b
 
-figjam: https://www.figma.com/board/A7IJz9a5pRJBq4BiryvEAk/Nya-Kino-sidan?node-id=0-1&p=f&t=IwLQLdlYHv1Fw7oA-0
+Brainstorm figjam: https://www.figma.com/board/A7IJz9a5pRJBq4BiryvEAk/Nya-Kino-sidan?node-id=0-1&p=f&t=IwLQLdlYHv1Fw7oA-0
+
+Figma design: https://www.figma.com/design/yfHD0zv9YxYGmzbA59PNui/Proxima-b?node-id=0-1&p=f&t=8RElNDTKqd4ATMDh-0
 
 **Schema för möten:**
 - Möten sker på vardagar klockan 09:30 via Teams om möjligt
