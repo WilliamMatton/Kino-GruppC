@@ -124,6 +124,13 @@ body {
   transform: scale(0.98);
 }
 
+.formContainer {
+  margin-top: 40px;
+  font-size: 15px;
+  color: #a0a0a0;
+  text-align: center;
+}
+
 h1 {
   color: red;
 }
