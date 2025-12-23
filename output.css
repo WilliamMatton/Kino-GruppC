@@ -124,13 +124,15 @@ body {
   transform: scale(0.98);
 }
 
-.formContainer {
+.contactInfo {
   margin-top: 40px;
-  font-size: 15px;
+  font-size: 1rem;
   color: #a0a0a0;
   text-align: center;
 }
 
-h1 {
-  color: red;
+.mejlAdress, .telefon, .adress {
+  display: flex;
+  justify-content: center;
+  margin: 6px 0;
 }
