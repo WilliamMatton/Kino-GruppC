@@ -1,4 +1,7 @@
-.memberpageDef {
+
+// sass file for Member page
+
+.memberpageDef{
   min-height: 100vh;
   font-family: Inter;
   background-color: #2a2a2a;
@@ -14,18 +17,16 @@
 h1.memberHone {
   font-weight: 500;
   margin-top: 0;
-}
-@media (min-width: 460px) {
-  h1.memberHone {
+
+  @media (min-width: 460px) {
     font-size: 2em;
   }
 }
 
 h1.memberHone {
   font-weight: 500;
-}
-@media (max-width: 449px) {
-  h1.memberHone {
+
+  @media (max-width: 449px) {
     font-size: 1.5em;
   }
 }
@@ -33,22 +34,20 @@ h1.memberHone {
 .memberWrap {
   height: 12em;
   background-color: #262626;
-}
-@media (min-width: 460px) {
-  .memberWrap {
-    max-width: 40em;
-    padding: 4em;
+
+  @media (min-width: 460px) {
+  max-width: 40em;
+  padding: 4em;
   }
 }
 
 .memberWrap {
   height: 12em;
   background-color: #262626;
-}
-@media (max-width: 449px) {
-  .memberWrap {
-    max-width: 20em;
-    padding: 1.5em;
+
+  @media (max-width: 449px) {
+  max-width: 20em;
+  padding: 1.5em;
   }
 }
 
