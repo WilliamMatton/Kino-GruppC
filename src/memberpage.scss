@@ -1,8 +1,56 @@
 
 // sass file for Member page
 
-body {
+.memberpageDef{
   min-height: 100vh;
+  font-family: Inter;
   background-color: #2a2a2a;
   color: #ffffff;
+}
+
+.memberWmark {
+  font-size: 1.5em;
+  color: #4b4b4b;
+  margin-bottom: 0;
+}
+
+h1.memberHone {
+  font-weight: 500;
+  margin-top: 0;
+
+  @media (min-width: 460px) {
+    font-size: 2em;
+  }
+}
+
+h1.memberHone {
+  font-weight: 500;
+
+  @media (max-width: 449px) {
+    font-size: 1.5em;
+  }
+}
+
+.memberWrap {
+  height: 12em;
+  background-color: #262626;
+
+  @media (min-width: 460px) {
+  max-width: 40em;
+  padding: 4em;
+  }
+}
+
+.memberWrap {
+  height: 12em;
+  background-color: #262626;
+
+  @media (max-width: 449px) {
+  max-width: 20em;
+  padding: 1.5em;
+  }
+}
+
+.placeTemp {
+  color: #5c5c5c;
 }
