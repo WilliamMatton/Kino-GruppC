@@ -1,63 +1,7 @@
-.memberpageDef {
-  min-height: 100vh;
-  font-family: Inter;
-  background-color: #2a2a2a;
-  color: #ffffff;
-}
-
-.memberWmark {
-  font-size: 1.5em;
-  color: #4b4b4b;
-  margin-bottom: 0;
-}
-
-h1.memberHone {
-  font-weight: 500;
-  margin-top: 0;
-}
-@media (min-width: 460px) {
-  h1.memberHone {
-    font-size: 2em;
-  }
-}
-
-h1.memberHone {
-  font-weight: 500;
-}
-@media (max-width: 449px) {
-  h1.memberHone {
-    font-size: 1.5em;
-  }
-}
-
-.memberWrap {
-  height: 12em;
-  background-color: #262626;
-}
-@media (min-width: 460px) {
-  .memberWrap {
-    max-width: 40em;
-    padding: 4em;
-  }
-}
-
-.memberWrap {
-  height: 12em;
-  background-color: #262626;
-}
-@media (max-width: 449px) {
-  .memberWrap {
-    max-width: 20em;
-    padding: 1.5em;
-  }
-}
-
-.placeTemp {
-  color: #5c5c5c;
 .bistroBody {
   background-color: #231F20;
   color: white;
-  font-family: "Inter";
+  font-family: 'Inter';
   margin: 0;
   padding: 0;
 }
@@ -109,7 +53,7 @@ h1.memberHone {
 }
 
 .bistroMealHeading {
-  grid-column: 1/2;
+  grid-column: 1 / 2;
   margin: 0;
 }
 
@@ -117,13 +61,13 @@ h1.memberHone {
   align-self: center;
   font-size: 1rem;
   font-weight: lighter;
-  grid-column: 2/2;
+  grid-column: 2 / 2;
   text-align: end;
 }
 
 .bistroMealDescription {
   font-size: 0.9rem;
   font-weight: lighter;
-  grid-column: 1/2;
+  grid-column: 1 / 2;
   margin: 0.7rem 0;
 }
