@@ -1,7 +1,7 @@
 .bistroBody {
   background-color: #231F20;
   color: white;
-  font-family: "Inter";
+  font-family: 'Inter';
   margin: 0;
   padding: 0;
 }
@@ -53,7 +53,7 @@
 }
 
 .bistroMealHeading {
-  grid-column: 1/2;
+  grid-column: 1 / 2;
   margin: 0;
 }
 
@@ -61,13 +61,13 @@
   align-self: center;
   font-size: 1rem;
   font-weight: lighter;
-  grid-column: 2/2;
+  grid-column: 2 / 2;
   text-align: end;
 }
 
 .bistroMealDescription {
   font-size: 0.9rem;
   font-weight: lighter;
-  grid-column: 1/2;
+  grid-column: 1 / 2;
   margin: 0.7rem 0;
 }
