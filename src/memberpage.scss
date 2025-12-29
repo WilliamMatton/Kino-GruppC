@@ -101,8 +101,23 @@ h1.memberHone {
 
 .memberLoginInput {
   color: #ffffff;
-  font-size: 1em;
-  line-height: 2.6em;
+  font-size: 1.2em;
+  line-height: 2.2em;
+  letter-spacing: 1px;
+  width: 95%;
+  border: 0;
+  border-radius: .7em;
+  margin-top: .6em;
+  margin-bottom: 1.4em;
+  padding-left: .8em;
+  background-color: #464244;
+}
+
+.memberLoginInputSec {
+  color: #ffffff;
+  font-size: 1.2em;
+  line-height: 2.2em;
+  letter-spacing: 3px;
   width: 95%;
   border: 0;
   border-radius: .7em;
