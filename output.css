@@ -1,14 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
+.memberpageDef {
   min-height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: Inter;
   background-color: #2a2a2a;
   color: #ffffff;
 }
@@ -133,4 +125,125 @@ body {
 
 h1 {
   color: red;
+.memberWmark {
+  font-size: 1.5em;
+  color: #4b4b4b;
+  margin-bottom: 0;
+}
+
+h1.memberHone {
+  font-weight: 500;
+  margin-top: 0;
+}
+@media (min-width: 460px) {
+  h1.memberHone {
+    font-size: 2em;
+  }
+}
+
+h1.memberHone {
+  font-weight: 500;
+}
+@media (max-width: 449px) {
+  h1.memberHone {
+    font-size: 1.5em;
+  }
+}
+
+.memberWrap {
+  height: 12em;
+  background-color: #262626;
+}
+@media (min-width: 460px) {
+  .memberWrap {
+    max-width: 40em;
+    padding: 4em;
+  }
+}
+
+.memberWrap {
+  height: 12em;
+  background-color: #262626;
+}
+@media (max-width: 449px) {
+  .memberWrap {
+    max-width: 20em;
+    padding: 1.5em;
+  }
+}
+
+.placeTemp {
+  color: #5c5c5c;
+.bistroBody {
+  background-color: #231F20;
+  color: white;
+  font-family: "Inter";
+  margin: 0;
+  padding: 0;
+}
+
+.bistroPageHeading {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.bistroMain {
+  display: flex;
+  flex-direction: row;
+  gap: 102px;
+  margin: 0 145px;
+}
+
+.bistroMenu {
+  width: 450px;
+}
+
+.bistroMenuHeading {
+  justify-self: center;
+  border-bottom: 0.4rem solid white;
+  font-size: 1rem;
+  font-weight: lighter;
+  padding-bottom: 1rem;
+  text-align: center;
+  width: 7rem;
+}
+
+.bistroMenuGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 0 3rem;
+}
+
+.bistroMenuGroupHeading {
+  font-weight: lighter;
+  font-size: 1rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.bistroMeal {
+  border-bottom: 0.1rem solid white;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.bistroMealHeading {
+  grid-column: 1/2;
+  margin: 0;
+}
+
+.bistroMealCost {
+  align-self: center;
+  font-size: 1rem;
+  font-weight: lighter;
+  grid-column: 2/2;
+  text-align: end;
+}
+
+.bistroMealDescription {
+  font-size: 0.9rem;
+  font-weight: lighter;
+  grid-column: 1/2;
+  margin: 0.7rem 0;
 }
