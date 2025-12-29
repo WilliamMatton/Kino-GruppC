@@ -77,21 +77,23 @@
     <section class="bistroBookingSection">
       <h3 class="bistroPageSubHeading">Boka Bord</h3>
       <div class="bistroBookingPanel">
-        <label for="bistroBookingNameField">Namn</label>
+        <label for="bistroBookingNameField" id="bistroBookingNameLabel">Namn</label>
         <input type="text" class="bistroBookingInput" id="bistroBookingNameField">
-        <label for="bistroBookingEmailField">Email</label>
+        <label for="bistroBookingEmailField" id="bistroBookingEmailLabel">Email</label>
         <input type="email" class="bistroBookingInput" id="bistroBookingEmailField">
-        <label for="bistroBookingDateField">Datum</label>
+        <label for="bistroBookingDateField" id="bistroBookingDateLabel">Datum</label>
         <input type="date" class="bistroBookingInput" id="bistroBookingDateField">
-        <label for="bistroBookingTimeField">Tid</label>
+        <label for="bistroBookingTimeField" id="bistroBookingTimeLabel">Tid</label>
         <input type="time" class="bistroBookingInput" id="bistroBookingTimeField">
-        <label for="bistroBookingGuestsField">Gäster</label>
+        <label for="bistroBookingGuestsField" id="bistroBookingGuestsLabel">Gäster</label>
         <input type="number" class="bistroBookingInput" id="bistroBookingGuestsField" min="1" max="6">
-        <label for="bistroBookingTableButton">Bord</label>
+        <label for="bistroBookingTableButton" id="bistroBookingTableLabel">Bord</label>
         <input type="button" class="bistroBookingButton" id="bistroBookingTableButton" value="Välj Bord">
-        <label for="bistroBookingTableMovieCheckbox">Jag vill se film vid bordet</label>
+        <label for="bistroBookingTableMovieCheckbox" id="bistroBookingMovieLabel">Jag vill se film vid bordet
+          <br><span class="bistroBookingMovieLabelDesc">Gäster väljer specifik film vid bordet</span>
+        </label>
         <input type="checkbox" class="bistroBookingCheckbox" id="bistroBookingTableMovieCheckbox">
-        <input type="submit" class="bistroBookingButton" value="Boka">
+        <input type="submit" class="bistroBookingButton" id="bistroBookingSubmitButton" value="Boka">
       </div>
     </section>
   </main>
