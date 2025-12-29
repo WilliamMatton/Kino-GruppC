@@ -196,76 +196,85 @@ body {
     order: 2;
   }
 }
-.bistroBody {
-  background-color: #231F20;
-  color: white;
-  font-family: "Inter";
-  margin: 0;
-  padding: 0;
+.searchOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
-
-.bistroPageHeading {
-  font-size: 2rem;
-  text-align: center;
-}
-
-.bistroMain {
+.searchOverlay.active {
   display: flex;
-  flex-direction: row;
-  gap: 102px;
-  margin: 0 145px;
+  opacity: 1;
 }
 
-.bistroMenu {
-  width: 450px;
+.searchContainer {
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+  animation: slideDown 0.3s ease;
 }
 
-.bistroMenuHeading {
-  justify-self: center;
-  border-bottom: 0.4rem solid white;
-  font-size: 1rem;
-  font-weight: lighter;
-  padding-bottom: 1rem;
-  text-align: center;
-  width: 7rem;
+@keyframes slideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
-
-.bistroMenuGroup {
+.searchBox {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin: 0 0 3rem;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  background: var(--bg-dark);
+  border: 2px solid var(--border-soft);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
 }
 
-.bistroMenuGroupHeading {
-  font-weight: lighter;
-  font-size: 1rem;
-  margin: 2rem 0;
-  text-align: center;
+.searchIcon {
+  font-size: 20px;
+  color: var(--text-muted);
 }
 
-.bistroMeal {
-  border-bottom: 0.1rem solid white;
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--white);
+  font-size: 18px;
+  font-family: Inter, sans-serif;
+}
+.searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+.searchClose {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-strong);
   display: grid;
-  grid-auto-flow: column;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 18px;
 }
-
-.bistroMealHeading {
-  grid-column: 1/2;
-  margin: 0;
-}
-
-.bistroMealCost {
-  align-self: center;
-  font-size: 1rem;
-  font-weight: lighter;
-  grid-column: 2/2;
-  text-align: end;
-}
-
-.bistroMealDescription {
-  font-size: 0.9rem;
-  font-weight: lighter;
-  grid-column: 1/2;
-  margin: 0.7rem 0;
+.searchClose:hover {
+  background: var(--white-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
 }
