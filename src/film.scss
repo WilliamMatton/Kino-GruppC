@@ -1,6 +1,8 @@
 /* ============================================================
    ======================   CARDS   ============================
    ============================================================ */
+
+
 .card {
   background-color: white;
   border: #011827;
@@ -11,19 +13,18 @@
   overflow: hidden;
   width: 100%;
 }
-
-.container {
+ .container {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
-
 .imageCard {
   width: 100%;
   height: 270px;
   object-fit: fill;
   display: block;
 }
+
 
 .cardTitle {
   font-size: 1.6rem;
@@ -32,7 +33,6 @@
   margin-left: 0.6rem;
   margin-top: 0.5rem;
 }
-
 .cardInfo {
   font-size: 1rem;
   font-weight: 400;
@@ -40,7 +40,6 @@
   margin: 0;
   text-align: justify;
 }
-
 .datesInfo {
   font-size: 1rem;
   font-weight: 400;
