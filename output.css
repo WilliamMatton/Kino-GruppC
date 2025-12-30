@@ -1,7 +1,331 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+:root {
+  --bg-dark: #231f20;
+  --white: #ffffff;
+  --text-muted: #d3d2d6;
+  --text-strong: #f8f7f5;
+  --pill-bg: rgba(255, 255, 255, 0.04);
+  --pill-active: #554c48;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --white-hover: rgba(255, 255, 255, 0.1);
+  --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.35);
+  --blur-bg: rgba(35, 31, 32, 0.9);
+}
+
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: var(--bg-dark);
+  color: var(--white);
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  background: var(--bg-dark);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.navContainer {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 18px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  position: relative;
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.logoImg {
+  height: 110px;
+  z-index: 2;
+}
+
+.logoGlow {
+  position: absolute;
+  inset: -8px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 70%);
+  filter: blur(14px);
+  z-index: 1;
+}
+
+.navLinks {
+  display: flex;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 16px;
+  background: var(--pill-bg);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.navLink {
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.navLink:hover {
+  background: var(--white-hover);
+  color: var(--text-strong);
+}
+
+.navLink.active {
+  background: var(--pill-active);
+  color: var(--text-strong);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), var(--shadow-soft);
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-strong);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.iconBtn:hover {
+  background: var(--white-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btnPrimary {
+  height: 42px;
+  padding: 0 22px;
+  border-radius: 14px;
+  border: none;
+  background: var(--white);
+  color: #1b1515;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(255, 255, 255, 0.25);
+}
+
+.navToggle {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .navContainer {
+    padding: 12px 20px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .logoImg {
+    height: 86px;
+  }
+  .navLinks {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid var(--border-soft);
+    background: var(--blur-bg);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    border-radius: 0 0 16px 16px;
+    z-index: 1001;
+  }
+  .navLink {
+    padding: 12px 16px;
+    border-radius: 12px;
+  }
+  .navToggle:checked ~ .navLinks {
+    display: flex;
+  }
+  .navActions {
+    order: 2;
+    gap: 8px;
+  }
+  .iconBtn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .btnPrimary {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 540px) {
+  .navContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .logo {
+    order: 1;
+  }
+  .navActions {
+    order: 2;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+}
+
+.headerPlaceholder {
+  padding: 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+}
+
+.footerPlaceholder {
+  padding: 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-top: 2px solid #ddd;
+  margin-top: auto;
+}
+
+.contactContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.contactContainer h1 {
+  margin-bottom: 10px;
+  font-size: 3.5rem;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contactContainer p {
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+  color: #a0a0a0;
+  text-align: center;
+}
+
+.contactForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 15px;
+  font-weight: normal;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 16px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  background-color: #3a3a3a;
+  color: #a0a0a0;
+  transition: background-color 0.3s;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #6a6a6a;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  background-color: #404040;
+}
+
+.formGroup textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submitButton {
+  padding: 18px 28px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  margin-top: 10px;
+}
+
+.submitButton:hover {
+  background-color: #f0f0f0;
+}
+
+.submitButton:active {
+  transform: scale(0.98);
+}
+
 .memberpageDef {
   min-height: 100vh;
   font-family: Inter;
   background-color: #231f20;
+  background-color: #231F20;
   color: #ffffff;
 }
 

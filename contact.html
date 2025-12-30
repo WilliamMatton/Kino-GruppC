@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakta oss</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <header class="headerPlaceholder">
+        <p>Header Placeholder:</p>
+    </header>
+
+    <main class="contactContainer">
+        <h1>Contact Us</h1>
+        <p>Har du en fråga? Vi uppsakatar att du från av dig!</p>
+        <form class="contactForm">
+            <div class="formGroup">
+                <label for="fullName">Ditt Namn</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Ditt Namn" required>
+            </div>
+
+            <div class="formGroup">
+                <label for="emailAddress">E-postadress</label>
+                <input type="email" id="emailAddress" name="emailAddress" placeholder="din@epost.com" required>
+            </div>
+
+            <div class="formGroup">
+                <label for="subjectText">Ämne</label>
+                <input type="text" id="subjectText" name="subjectText" placeholder="Vad handlar det om?" required>
+            </div>
+
+            <div class="formGroup">
+                <label for="messageText">Meddelande</label>
+                <textarea id="messageText" name="messageText" rows="5" placeholder="Skriv ditt meddelande här..." required></textarea>
+            </div>
+
+            <button type="submit" class="submitButton">Skicka Meddelande</button>
+        </form>
+    </main>
+
+    <footer class="footerPlaceholder">
+        <p>Footer Placeholder</p>
+    </footer>
+</body>
+</html>
