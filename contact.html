@@ -4,11 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakta oss</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="output.css">
+    <script src="main.js"></script>
 </head>
 <body>
-    <header class="headerPlaceholder">
-        <p>Header Placeholder:</p>
+    <header class="navbar">
+        <div class="gradientLineTop"></div>
+
+        <div class="navContainer">
+            <a href="#" class="logo">
+                <div class="logoGlow"></div>
+                <img src="images/Proxima-B.gif" alt="Proxima Cinema Logo" class="logoImg">
+            </a>
+
+            <input type="checkbox" id="navToggle" class="navToggle" aria-label="Open main menu" />
+
+            <nav class="navLinks">
+                <a class="navLink" href="#"><span>Visningar</span></a>
+                <a class="navLink" href="#"><span>Filmer</span></a>
+                <a class="navLink" href="#"><span>Bistro/café</span></a>
+                <a class="navLink active" href="#"><span>Kontakta oss</span></a>
+                <a class="navLink" href="#"><span>Om oss</span></a>
+            </nav>
+
+            <div class="navActions">
+                <button class="iconBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+                <button class="btnPrimary"><i class="fas fa-ticket-alt"></i><span>Boka biljett</span></button>
+                <button class="iconBtn" aria-label="Account"><i class="fas fa-user"></i></button>
+                <label for="navToggle" class="iconBtn mobileMenu" aria-label="Menu"><i class="fas fa-bars"></i></label>
+            </div>
+        </div>
+
+        <div class="gradientLineBottom"></div>
     </header>
 
     <main class="contactContainer">

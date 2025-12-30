@@ -210,13 +210,6 @@ body {
   color: #ffffff;
 }
 
-.headerPlaceholder {
-  padding: 20px;
-  background-color: #f0f0f0;
-  text-align: center;
-  border-bottom: 2px solid #ddd;
-}
-
 .footerPlaceholder {
   padding: 20px;
   background-color: #f0f0f0;
@@ -451,4 +444,9 @@ h1.memberHone {
   font-weight: lighter;
   grid-column: 1/2;
   margin: 0.7rem 0;
+}
+
+.info {
+  color: white;
+  background-color: #1E1E1E;
 }
