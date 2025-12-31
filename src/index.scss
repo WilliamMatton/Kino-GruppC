@@ -1,54 +1,5 @@
-/* ============================================================
-   ======================   CARDS   ============================
-   ============================================================ */
-.card {
-  background-color: white;
-  border: #011827;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.233);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  width: 100%;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.imageCard {
-  width: 100%;
-  height: 270px;
-  object-fit: fill;
-  display: block;
-}
-
-.cardTitle {
-  font-size: 1.6rem;
-  font-weight: 400;
-  text-align: left;
-  margin-left: 0.6rem;
-  margin-top: 0.5rem;
-}
-
-.cardInfo {
-  font-size: 1rem;
-  font-weight: 400;
-  padding: 0.6rem;
-  margin: 0;
-  text-align: justify;
-}
-
-.datesInfo {
-  font-size: 1rem;
-  font-weight: 400;
-  padding: 0.6rem;
-  margin: 0;
-  text-align: justify;
-.memberpageDef {
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+
 :root {
   --bg-dark: #231f20;
   --white: #ffffff;
@@ -135,7 +86,8 @@ body {
 .navLink.active {
   background: var(--pill-active);
   color: var(--text-strong);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), var(--shadow-soft);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+              var(--shadow-soft);
 }
 
 .navActions {
@@ -193,9 +145,11 @@ body {
     gap: 16px;
     flex-wrap: wrap;
   }
+
   .logoImg {
     height: 86px;
   }
+
   .navLinks {
     display: none;
     position: absolute;
@@ -211,22 +165,27 @@ body {
     border-radius: 0 0 16px 16px;
     z-index: 1001;
   }
+
   .navLink {
     padding: 12px 16px;
     border-radius: 12px;
   }
+
   .navToggle:checked ~ .navLinks {
     display: flex;
   }
+
   .navActions {
     order: 2;
     gap: 8px;
   }
+
   .iconBtn {
     width: 38px;
     height: 38px;
     border-radius: 10px;
   }
+
   .btnPrimary {
     height: 40px;
     padding: 0 16px;
@@ -234,18 +193,22 @@ body {
     font-size: 14px;
   }
 }
+
 @media (max-width: 540px) {
   .navContainer {
     flex-wrap: wrap;
     justify-content: center;
   }
+
   .logo {
     order: 1;
   }
+
   .navActions {
     order: 2;
   }
 }
+
 .footer {
   background: var(--bg-dark);
   border-top: 1px solid var(--border-soft);
@@ -339,278 +302,21 @@ body {
   .footer {
     padding: 48px 24px 24px;
   }
+
   .footerContainer {
     grid-template-columns: 1fr;
     gap: 32px;
     margin-bottom: 32px;
     padding-bottom: 24px;
   }
+
   .footerSection h4 {
     font-size: 15px;
   }
+
   .footerSection p,
   .footerSection a {
     font-size: 13px;
   }
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  color: #ffffff;
-}
-
-.headerPlaceholder {
-  padding: 20px;
-  background-color: #f0f0f0;
-  text-align: center;
-  border-bottom: 2px solid #ddd;
-}
-
-.footerPlaceholder {
-  padding: 20px;
-  background-color: #f0f0f0;
-  text-align: center;
-  border-top: 2px solid #ddd;
-  margin-top: auto;
-}
-
-.contactContainer {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
-  max-width: 700px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.contactContainer h1 {
-  margin-bottom: 10px;
-  font-size: 3.5rem;
-  color: #ffffff;
-  font-weight: bold;
-  text-align: center;
-}
-
-.contactContainer p {
-  margin-bottom: 40px;
-  font-size: 1.1rem;
-  color: #a0a0a0;
-  text-align: center;
-}
-
-.contactForm {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.formGroup label {
-  font-size: 15px;
-  font-weight: normal;
-  color: #ffffff;
-  margin-bottom: 8px;
-}
-
-.formGroup input,
-.formGroup textarea {
-  padding: 16px 18px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  font-family: inherit;
-  background-color: #3a3a3a;
-  color: #a0a0a0;
-  transition: background-color 0.3s;
-}
-
-.formGroup input::placeholder,
-.formGroup textarea::placeholder {
-  color: #6a6a6a;
-}
-
-.formGroup input:focus,
-.formGroup textarea:focus {
-  outline: none;
-  background-color: #404040;
-}
-
-.formGroup textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.submitButton {
-  padding: 18px 28px;
-  font-size: 17px;
-  font-weight: 600;
-  color: #1a1a1a;
-  background-color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.1s;
-  margin-top: 10px;
-}
-
-.submitButton:hover {
-  background-color: #f0f0f0;
-}
-
-.submitButton:active {
-  transform: scale(0.98);
-}
-
-.memberpageDef {
-  min-height: 100vh;
-  font-family: Inter;
-  background-color: #231F20;
-  color: #ffffff;
-}
-
-.memberWmark {
-  font-size: 1.5em;
-  color: #4b4b4b;
-  margin-bottom: 0;
-}
-
-h1.memberHone {
-  font-weight: 500;
-  margin-top: 0;
-}
-@media (min-width: 460px) {
-  h1.memberHone {
-    font-size: 2em;
-  }
-}
-
-h1.memberHone {
-  font-weight: 500;
-}
-@media (max-width: 449px) {
-  h1.memberHone {
-    font-size: 1.5em;
-  }
-}
-
-.memberWrap {
-  height: 12em;
-  background-color: #262626;
-}
-@media (min-width: 460px) {
-  .memberWrap {
-    max-width: 40em;
-    padding: 4em;
-  }
-}
-
-.memberWrap {
-  height: 12em;
-  background-color: #262626;
-}
-@media (max-width: 449px) {
-  .memberWrap {
-    max-width: 20em;
-    padding: 1.5em;
-  }
-}
-
-.placeTemp {
-  color: #5c5c5c;
-}
-
-.bistroBody {
-  background-color: #231F20;
-  color: white;
-  font-family: "Inter";
-  margin: 0;
-  padding: 0;
-}
-
-.bistroPageHeading {
-  font-size: 2rem;
-  text-align: center;
-}
-
-.bistroMain {
-  display: flex;
-  flex-direction: row;
-  gap: 102px;
-  margin: 0 145px;
-}
-
-.bistroMenu {
-  width: 450px;
-}
-
-.bistroMenuHeading {
-  justify-self: center;
-  border-bottom: 0.4rem solid white;
-  font-size: 1rem;
-  font-weight: lighter;
-  padding-bottom: 1rem;
-  text-align: center;
-  width: 7rem;
-}
-
-.bistroMenuGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin: 0 0 3rem;
-}
-
-.bistroMenuGroupHeading {
-  font-weight: lighter;
-  font-size: 1rem;
-  margin: 2rem 0;
-  text-align: center;
-}
-
-.bistroMeal {
-  border-bottom: 0.1rem solid white;
-  display: grid;
-  grid-auto-flow: column;
-}
-
-.bistroMealHeading {
-  grid-column: 1/2;
-  margin: 0;
-}
-
-.bistroMealCost {
-  align-self: center;
-  font-size: 1rem;
-  font-weight: lighter;
-  grid-column: 2/2;
-  text-align: end;
-}
-
-.bistroMealDescription {
-  font-size: 0.9rem;
-  font-weight: lighter;
-  grid-column: 1/2;
-  margin: 0.7rem 0;
-}
-
-.info {
-  color: white;
-  background-color: #1E1E1E;
-}
