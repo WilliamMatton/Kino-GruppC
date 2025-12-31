@@ -1,0 +1,73 @@
+.bistroBody {
+  background-color: #231F20;
+  color: white;
+  font-family: 'Inter';
+  margin: 0;
+  padding: 0;
+}
+
+.bistroPageHeading {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.bistroMain {
+  display: flex;
+  flex-direction: row;
+  gap: 102px;
+  margin: 0 145px;
+}
+
+.bistroMenu {
+  width: 450px;
+}
+
+.bistroMenuHeading {
+  justify-self: center;
+  border-bottom: 0.4rem solid white;
+  font-size: 1rem;
+  font-weight: lighter;
+  padding-bottom: 1rem;
+  text-align: center;
+  width: 7rem;
+}
+
+.bistroMenuGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 0 3rem;
+}
+
+.bistroMenuGroupHeading {
+  font-weight: lighter;
+  font-size: 1rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.bistroMeal {
+  border-bottom: 0.1rem solid white;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.bistroMealHeading {
+  grid-column: 1 / 2;
+  margin: 0;
+}
+
+.bistroMealCost {
+  align-self: center;
+  font-size: 1rem;
+  font-weight: lighter;
+  grid-column: 2 / 2;
+  text-align: end;
+}
+
+.bistroMealDescription {
+  font-size: 0.9rem;
+  font-weight: lighter;
+  grid-column: 1 / 2;
+  margin: 0.7rem 0;
+}
