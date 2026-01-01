@@ -308,9 +308,7 @@ h1.memberHone {
   top: calc(-64px + 0.5rem);
   width: 2rem;
 }
-
-.bistroTableModalCloseBtn::before,
-.bistroTableModalCloseBtn::after {
+.bistroTableModalCloseBtn::before, .bistroTableModalCloseBtn::after {
   background: white;
   content: "";
   height: 0.2rem;
@@ -320,11 +318,9 @@ h1.memberHone {
   transform-origin: center;
   width: 2rem;
 }
-
 .bistroTableModalCloseBtn::before {
   transform: translate(-50%, -50%) rotate(45deg);
 }
-
 .bistroTableModalCloseBtn::after {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
@@ -345,11 +341,9 @@ h1.memberHone {
   row-gap: 0.5rem;
   margin: 1rem;
 }
-
 .bistroTableMap > *:nth-child(odd) {
   justify-self: start;
 }
-
 .bistroTableMap > *:nth-child(even) {
   justify-self: end;
 }
@@ -361,7 +355,6 @@ h1.memberHone {
   height: 4rem;
   width: 10rem;
 }
-
 .bistroTableMapTable h4 {
   font-weight: normal;
   text-align: center;
