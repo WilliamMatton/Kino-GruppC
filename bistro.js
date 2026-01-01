@@ -6,12 +6,30 @@ const bistroTableModalCloseBtn = document.querySelector(".bistroTableModalCloseB
 const bistroTableMapModal = document.querySelector(".bistroTableMapModal");
 const bistroModalOverlay = document.querySelector(".bistroModalOverlay");
 
-bistroPlaceholderTableMapButton.addEventListener("click", function() {
+const bistroTableMapTables = document.querySelectorAll(".bistroTableMapTable");
+
+bistroPlaceholderTableMapButton.addEventListener("click", openTableModal);
+bistroTableModalCloseBtn.addEventListener("click", closeTableModal);
+
+function openTableModal() {
   bistroModalOverlay.classList.add("bistroModalActive");
   root.classList.add("scrollLock");
-});
+}
 
-bistroTableModalCloseBtn.addEventListener("click", function() {
+function closeTableModal() {
   bistroModalOverlay.classList.remove("bistroModalActive");
   root.classList.remove("scrollLock");
+}
+
+bistroTableMapTables.forEach(table => {
+  if(!table.classList.contains("bistroTableBooked")) {
+    table.addEventListener("click", function() {
+      chooseTable(table.children);
+    });
+  }
 });
+
+function chooseTable(table) {
+  bistroPlaceholderTableMapButton.value = table[0].innerText;
+  closeTableModal();
+}
