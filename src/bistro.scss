@@ -1,3 +1,8 @@
+.scrollLock {
+  height: 100%;
+  overflow: hidden;
+}
+
 .bistroBody {
   background-color: #231F20;
   color: white;
@@ -70,4 +75,34 @@
   font-weight: lighter;
   grid-column: 1 / 2;
   margin: 0.7rem 0;
+}
+
+.bistroModalOverlay {
+  align-items: center;
+  display: none;
+  background-color: rgba(255, 255, 255, 0.35);
+  inset: 0;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+}
+
+.bistroModalActive {
+  display: flex;
+}
+
+.bistroTableMapModal {
+  background-color: #231F20;
+  height: min(90vh, 600px);
+  width: min(90vw, 500px);
+  z-index: 2;
+}
+
+.bistroTableModalCloseBtn {
+  height: 2rem;
+  width: 2rem;
+}
+
+.bistroModalCloseBtnActive {
+  display: block;
 }
