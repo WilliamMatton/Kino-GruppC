@@ -431,19 +431,20 @@ body {
 .memberpageDef {
   min-height: 100vh;
   font-family: Inter;
+  background-color: #231f20;
   background-color: #231F20;
   color: #ffffff;
 }
 
 .memberWmark {
   font-size: 1.5em;
-  color: #4b4b4b;
+  color: #353535;
   margin-bottom: 0;
 }
 
 h1.memberHone {
   font-weight: 500;
-  margin-top: 0;
+  margin: 0;
 }
 @media (min-width: 460px) {
   h1.memberHone {
@@ -454,36 +455,132 @@ h1.memberHone {
 h1.memberHone {
   font-weight: 500;
 }
-@media (max-width: 449px) {
+@media (max-width: 459px) {
   h1.memberHone {
     font-size: 1.5em;
   }
 }
 
 .memberWrap {
-  height: 12em;
-  background-color: #262626;
+  height: auto;
+  background-color: #231f20;
+  margin: 0 auto;
+  text-align: center;
 }
 @media (min-width: 460px) {
   .memberWrap {
-    max-width: 40em;
-    padding: 4em;
+    max-width: 34em;
+    padding: 2em;
   }
 }
 
 .memberWrap {
-  height: 12em;
-  background-color: #262626;
+  height: auto;
+  background-color: #231f20;
+  margin: 0 auto;
+  text-align: center;
 }
-@media (max-width: 449px) {
+@media (max-width: 459px) {
   .memberWrap {
-    max-width: 20em;
-    padding: 1.5em;
+    max-width: 99%;
+    padding: 1em;
   }
 }
 
 .placeTemp {
   color: #5c5c5c;
+}
+
+.memberLoginWrap {
+  width: 100%;
+  height: auto;
+  background-color: #272324;
+  margin: 0 auto;
+  border: 1px solid #453f41;
+  border-radius: 1em;
+}
+
+.memberTitle {
+  color: #9ca3af;
+  font-size: 0.9em;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.memberInputWrap {
+  margin: 0 auto;
+}
+@media (min-width: 460px) {
+  .memberInputWrap {
+    width: 70%;
+    height: 22em;
+    padding: 1em;
+  }
+}
+
+.memberInputWrap {
+  margin: 0 auto;
+}
+@media (max-width: 459px) {
+  .memberInputWrap {
+    width: 92%;
+    height: 20em;
+    padding: 1em;
+  }
+}
+
+.centerDiv {
+  text-align: left;
+}
+
+.memberLoginInput {
+  color: #ffffff;
+  font-size: 1.2em;
+  line-height: 2.2em;
+  letter-spacing: 1px;
+  width: 95%;
+  border: 0;
+  border-radius: 0.7em;
+  margin-top: 0.6em;
+  margin-bottom: 1.4em;
+  padding-left: 0.8em;
+  background-color: #464244;
+}
+
+.memberLoginInputSec {
+  color: #ffffff;
+  font-size: 1.2em;
+  line-height: 2.2em;
+  letter-spacing: 3px;
+  width: 95%;
+  border: 0;
+  border-radius: 0.7em;
+  margin-top: 0.6em;
+  margin-bottom: 1.4em;
+  padding-left: 0.8em;
+  background-color: #464244;
+}
+
+.memberLabel {
+  font-size: 1em;
+}
+
+#memberLoginButton {
+  width: 100%;
+  height: 3em;
+  border-radius: 0.8em;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 1em;
+  cursor: pointer;
+}
+
+a.memberForgotten {
+  color: #5D8FE5;
+  text-decoration: none;
+}
+a.memberForgotten:hover {
+  text-decoration: underline;
 }
 
 .bistroBody {
