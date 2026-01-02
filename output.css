@@ -1,3 +1,4 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
 /* ============================================================
    ======================   CARDS   ============================
    ============================================================ */
@@ -47,8 +48,8 @@
   padding: 0.6rem;
   margin: 0;
   text-align: justify;
-.memberpageDef {
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+}
+
 :root {
   --bg-dark: #231f20;
   --white: #ffffff;
