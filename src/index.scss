@@ -1,4 +1,4 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
 
 :root {
   --bg-dark: #231f20;
@@ -206,6 +206,117 @@ body {
 
   .navActions {
     order: 2;
+  }
+}
+
+.footer {
+  background: var(--bg-dark);
+  border-top: 1px solid var(--border-soft);
+  padding: 64px 48px 32px;
+}
+
+.footerContainer {
+  max-width: 1420px;
+  margin: 0 auto 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.footerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footerSection h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-strong);
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 20px rgba(248, 247, 245, 0.2);
+}
+
+.footerSection p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.footerSection a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  text-shadow: 0 0 12px rgba(248, 247, 245, 0.1);
+}
+
+.footerSection a:hover {
+  color: var(--text-strong);
+  text-shadow: 0 0 16px rgba(248, 247, 245, 0.5);
+}
+
+.copyright {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footerSocial {
+  max-width: 1420px;
+  margin: 16px 0 0 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+
+.socialIcon:hover {
+  color: var(--text-strong);
+  background: rgba(248, 247, 245, 0.08);
+  border-color: rgba(248, 247, 245, 0.2);
+  text-shadow: 0 0 12px rgba(248, 247, 245, 0.4);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 48px 24px 24px;
+  }
+
+  .footerContainer {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+  }
+
+  .footerSection h4 {
+    font-size: 15px;
+  }
+
+  .footerSection p,
+  .footerSection a {
+    font-size: 13px;
   }
 }
 
