@@ -11,21 +11,374 @@ body {
   font-family: Arial, sans-serif;
   background-color: #2a2a2a;
   color: #ffffff;
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+/* ============================================================
+   ======================   CARDS   ============================
+   ============================================================ */
+.card {
+  background-color: white;
+  border: #011827;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.233);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
 }
 
-.headerPlaceholder {
-  padding: 20px;
-  background-color: #f0f0f0;
-  text-align: center;
-  border-bottom: 2px solid #ddd;
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.footerPlaceholder {
-  padding: 20px;
-  background-color: #f0f0f0;
+.imageCard {
+  width: 100%;
+  height: 270px;
+  object-fit: fill;
+  display: block;
+}
+
+.cardTitle {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.cardInfo {
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.6rem;
+  margin: 0;
+  text-align: justify;
+}
+
+.datesInfo {
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.6rem;
+  margin: 0;
+  text-align: justify;
+}
+
+:root {
+  --bg-dark: #231f20;
+  --white: #ffffff;
+  --text-muted: #d3d2d6;
+  --text-strong: #f8f7f5;
+  --pill-bg: rgba(255, 255, 255, 0.04);
+  --pill-active: #554c48;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --white-hover: rgba(255, 255, 255, 0.1);
+  --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.35);
+  --blur-bg: rgba(35, 31, 32, 0.9);
+}
+
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: var(--bg-dark);
+  color: var(--white);
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  background: var(--bg-dark);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.navContainer {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 18px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  position: relative;
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.logoImg {
+  height: 110px;
+  z-index: 2;
+}
+
+.logoGlow {
+  position: absolute;
+  inset: -8px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 70%);
+  filter: blur(14px);
+  z-index: 1;
+}
+
+.navLinks {
+  display: flex;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 16px;
+  background: var(--pill-bg);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.navLink {
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.navLink:hover {
+  background: var(--white-hover);
+  color: var(--text-strong);
+}
+
+.navLink.active {
+  background: var(--pill-active);
+  color: var(--text-strong);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), var(--shadow-soft);
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-strong);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.iconBtn:hover {
+  background: var(--white-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btnPrimary {
+  height: 42px;
+  padding: 0 22px;
+  border-radius: 14px;
+  border: none;
+  background: var(--white);
+  color: #1b1515;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(255, 255, 255, 0.25);
+}
+
+.navToggle {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .navContainer {
+    padding: 12px 20px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .logoImg {
+    height: 86px;
+  }
+  .navLinks {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid var(--border-soft);
+    background: var(--blur-bg);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    border-radius: 0 0 16px 16px;
+    z-index: 1001;
+  }
+  .navLink {
+    padding: 12px 16px;
+    border-radius: 12px;
+  }
+  .navToggle:checked ~ .navLinks {
+    display: flex;
+  }
+  .navActions {
+    order: 2;
+    gap: 8px;
+  }
+  .iconBtn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .btnPrimary {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 540px) {
+  .navContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .logo {
+    order: 1;
+  }
+  .navActions {
+    order: 2;
+  }
+}
+.footer {
+  background: var(--bg-dark);
+  border-top: 1px solid var(--border-soft);
+  padding: 64px 48px 32px;
+}
+
+.footerContainer {
+  max-width: 1420px;
+  margin: 0 auto 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.footerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footerSection h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-strong);
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 20px rgba(248, 247, 245, 0.2);
+}
+
+.footerSection p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.footerSection a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  text-shadow: 0 0 12px rgba(248, 247, 245, 0.1);
+}
+
+.footerSection a:hover {
+  color: var(--text-strong);
+  text-shadow: 0 0 16px rgba(248, 247, 245, 0.5);
+}
+
+.copyright {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0;
   text-align: center;
-  border-top: 2px solid #ddd;
-  margin-top: auto;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footerSocial {
+  max-width: 1420px;
+  margin: 16px 0 0 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+
+.socialIcon:hover {
+  color: var(--text-strong);
+  background: rgba(248, 247, 245, 0.08);
+  border-color: rgba(248, 247, 245, 0.2);
+  text-shadow: 0 0 12px rgba(248, 247, 245, 0.4);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 48px 24px 24px;
+  }
+  .footerContainer {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+  }
+  .footerSection h4 {
+    font-size: 15px;
+  }
+  .footerSection p,
+  .footerSection a {
+    font-size: 13px;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
 }
 
 .contactContainer {
@@ -128,18 +481,20 @@ body {
   min-height: 100vh;
   font-family: Inter;
   background-color: #2a2a2a;
+  background-color: #231f20;
+  background-color: #231F20;
   color: #ffffff;
 }
 
 .memberWmark {
   font-size: 1.5em;
-  color: #4b4b4b;
+  color: #353535;
   margin-bottom: 0;
 }
 
 h1.memberHone {
   font-weight: 500;
-  margin-top: 0;
+  margin: 0;
 }
 @media (min-width: 460px) {
   h1.memberHone {
@@ -150,31 +505,35 @@ h1.memberHone {
 h1.memberHone {
   font-weight: 500;
 }
-@media (max-width: 449px) {
+@media (max-width: 459px) {
   h1.memberHone {
     font-size: 1.5em;
   }
 }
 
 .memberWrap {
-  height: 12em;
-  background-color: #262626;
+  height: auto;
+  background-color: #231f20;
+  margin: 0 auto;
+  text-align: center;
 }
 @media (min-width: 460px) {
   .memberWrap {
-    max-width: 40em;
-    padding: 4em;
+    max-width: 34em;
+    padding: 2em;
   }
 }
 
 .memberWrap {
-  height: 12em;
-  background-color: #262626;
+  height: auto;
+  background-color: #231f20;
+  margin: 0 auto;
+  text-align: center;
 }
-@media (max-width: 449px) {
+@media (max-width: 459px) {
   .memberWrap {
-    max-width: 20em;
-    padding: 1.5em;
+    max-width: 99%;
+    padding: 1em;
   }
 }
 
@@ -185,6 +544,96 @@ h1.memberHone {
 .scrollLock {
   height: 100%;
   overflow: hidden;
+.memberLoginWrap {
+  width: 100%;
+  height: auto;
+  background-color: #272324;
+  margin: 0 auto;
+  border: 1px solid #453f41;
+  border-radius: 1em;
+}
+
+.memberTitle {
+  color: #9ca3af;
+  font-size: 0.9em;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.memberInputWrap {
+  margin: 0 auto;
+}
+@media (min-width: 460px) {
+  .memberInputWrap {
+    width: 70%;
+    height: 22em;
+    padding: 1em;
+  }
+}
+
+.memberInputWrap {
+  margin: 0 auto;
+}
+@media (max-width: 459px) {
+  .memberInputWrap {
+    width: 92%;
+    height: 20em;
+    padding: 1em;
+  }
+}
+
+.centerDiv {
+  text-align: left;
+}
+
+.memberLoginInput {
+  color: #ffffff;
+  font-size: 1.2em;
+  line-height: 2.2em;
+  letter-spacing: 1px;
+  width: 95%;
+  border: 0;
+  border-radius: 0.7em;
+  margin-top: 0.6em;
+  margin-bottom: 1.4em;
+  padding-left: 0.8em;
+  background-color: #464244;
+}
+
+.memberLoginInputSec {
+  color: #ffffff;
+  font-size: 1.2em;
+  line-height: 2.2em;
+  letter-spacing: 3px;
+  width: 95%;
+  border: 0;
+  border-radius: 0.7em;
+  margin-top: 0.6em;
+  margin-bottom: 1.4em;
+  padding-left: 0.8em;
+  background-color: #464244;
+}
+
+.memberLabel {
+  font-size: 1em;
+}
+
+#memberLoginButton {
+  width: 100%;
+  height: 3em;
+  border-radius: 0.8em;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 1em;
+  cursor: pointer;
+}
+
+a.memberForgotten {
+  color: #5D8FE5;
+  text-decoration: none;
+}
+a.memberForgotten:hover {
+  text-decoration: underline;
 }
 
 .bistroBody {
