@@ -1,4 +1,55 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+/* ============================================================
+   ======================   CARDS   ============================
+   ============================================================ */
+.card {
+  background-color: white;
+  border: #011827;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.233);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.imageCard {
+  width: 100%;
+  height: 270px;
+  object-fit: fill;
+  display: block;
+}
+
+.cardTitle {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.cardInfo {
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.6rem;
+  margin: 0;
+  text-align: justify;
+}
+
+.datesInfo {
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.6rem;
+  margin: 0;
+  text-align: justify;
+}
+
 :root {
   --bg-dark: #231f20;
   --white: #ffffff;
@@ -196,6 +247,113 @@ body {
     order: 2;
   }
 }
+.footer {
+  background: var(--bg-dark);
+  border-top: 1px solid var(--border-soft);
+  padding: 64px 48px 32px;
+}
+
+.footerContainer {
+  max-width: 1420px;
+  margin: 0 auto 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.footerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footerSection h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-strong);
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 20px rgba(248, 247, 245, 0.2);
+}
+
+.footerSection p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.footerSection a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.25s ease;
+  text-shadow: 0 0 12px rgba(248, 247, 245, 0.1);
+}
+
+.footerSection a:hover {
+  color: var(--text-strong);
+  text-shadow: 0 0 16px rgba(248, 247, 245, 0.5);
+}
+
+.copyright {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footerSocial {
+  max-width: 1420px;
+  margin: 16px 0 0 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+
+.socialIcon:hover {
+  color: var(--text-strong);
+  background: rgba(248, 247, 245, 0.08);
+  border-color: rgba(248, 247, 245, 0.2);
+  text-shadow: 0 0 12px rgba(248, 247, 245, 0.4);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 48px 24px 24px;
+  }
+  .footerContainer {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+  }
+  .footerSection h4 {
+    font-size: 15px;
+  }
+  .footerSection p,
+  .footerSection a {
+    font-size: 13px;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -208,21 +366,6 @@ body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   color: #ffffff;
-}
-
-.headerPlaceholder {
-  padding: 20px;
-  background-color: #f0f0f0;
-  text-align: center;
-  border-bottom: 2px solid #ddd;
-}
-
-.footerPlaceholder {
-  padding: 20px;
-  background-color: #f0f0f0;
-  text-align: center;
-  border-top: 2px solid #ddd;
-  margin-top: auto;
 }
 
 .contactContainer {
@@ -324,19 +467,20 @@ body {
 .memberpageDef {
   min-height: 100vh;
   font-family: Inter;
+  background-color: #231f20;
   background-color: #231F20;
   color: #ffffff;
 }
 
 .memberWmark {
   font-size: 1.5em;
-  color: #4b4b4b;
+  color: #353535;
   margin-bottom: 0;
 }
 
 h1.memberHone {
   font-weight: 500;
-  margin-top: 0;
+  margin: 0;
 }
 @media (min-width: 460px) {
   h1.memberHone {
@@ -347,36 +491,141 @@ h1.memberHone {
 h1.memberHone {
   font-weight: 500;
 }
-@media (max-width: 449px) {
+@media (max-width: 459px) {
   h1.memberHone {
     font-size: 1.5em;
   }
 }
 
 .memberWrap {
-  height: 12em;
-  background-color: #262626;
+  height: auto;
+  background-color: #231f20;
+  margin: 0 auto;
+  text-align: center;
 }
 @media (min-width: 460px) {
   .memberWrap {
-    max-width: 40em;
-    padding: 4em;
+    max-width: 34em;
+    padding: 2em;
   }
 }
 
 .memberWrap {
-  height: 12em;
-  background-color: #262626;
+  height: auto;
+  background-color: #231f20;
+  margin: 0 auto;
+  text-align: center;
 }
-@media (max-width: 449px) {
+@media (max-width: 459px) {
   .memberWrap {
-    max-width: 20em;
-    padding: 1.5em;
+    max-width: 99%;
+    padding: 1em;
   }
 }
 
 .placeTemp {
   color: #5c5c5c;
+}
+
+.memberLoginWrap {
+  width: 100%;
+  height: auto;
+  background-color: #272324;
+  margin: 0 auto;
+  border: 1px solid #453f41;
+  border-radius: 1em;
+}
+
+.memberTitle {
+  color: #9ca3af;
+  font-size: 0.9em;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.memberInputWrap {
+  margin: 0 auto;
+}
+@media (min-width: 460px) {
+  .memberInputWrap {
+    width: 70%;
+    height: 22em;
+    padding: 1em;
+  }
+}
+
+.memberInputWrap {
+  margin: 0 auto;
+}
+@media (max-width: 459px) {
+  .memberInputWrap {
+    width: 92%;
+    height: 20em;
+    padding: 1em;
+  }
+}
+
+.centerDiv {
+  text-align: left;
+}
+
+.memberLoginInput {
+  color: #ffffff;
+  font-size: 1.2em;
+  line-height: 2.2em;
+  letter-spacing: 1px;
+  width: 95%;
+  border: 0;
+  border-radius: 0.7em;
+  margin-top: 0.6em;
+  margin-bottom: 1.4em;
+  padding-left: 0.8em;
+  background-color: #464244;
+}
+
+.memberLoginInputSec {
+  color: #ffffff;
+  font-size: 1.2em;
+  line-height: 2.2em;
+  letter-spacing: 3px;
+  width: 95%;
+  border: 0;
+  border-radius: 0.7em;
+  margin-top: 0.6em;
+  margin-bottom: 1.4em;
+  padding-left: 0.8em;
+  background-color: #464244;
+}
+
+.memberLabel {
+  font-size: 1em;
+}
+
+#memberLoginButton {
+  width: 100%;
+  height: 3em;
+  border-radius: 0.8em;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 1em;
+  cursor: pointer;
+}
+
+a.memberForgotten {
+  color: #5D8FE5;
+  text-decoration: none;
+}
+a.memberForgotten:hover {
+  text-decoration: underline;
+}
+
+.iconBtn.active {
+  background: var(--pill-active);
+  color: var(--text-strong);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), var(--shadow-soft);
+}
+.iconBtn.active .fas.fa-user {
+  color: white; /* rgb(255, 100, 100); */
 }
 
 .bistroBody {
@@ -451,4 +700,117 @@ h1.memberHone {
   font-weight: lighter;
   grid-column: 1/2;
   margin: 0.7rem 0;
+}
+
+.bistroModalOverlay {
+  align-items: center;
+  display: none;
+  background-color: rgba(255, 255, 255, 0.35);
+  inset: 0;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+}
+
+.bistroModalActive {
+  display: flex;
+}
+
+.bistroTableMapModal {
+  background-color: #231F20;
+  height: min(90vh, 600px);
+  width: min(90vw, 500px);
+  z-index: 2;
+}
+
+.bistroTableMapCounter {
+  align-content: center;
+  background-color: #D9D9D9;
+  border-radius: 0 0 8px 8px;
+  height: 64px;
+  justify-self: center;
+  width: 334px;
+}
+
+.bistroTableMapCounterText {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.bistroTableModalCloseBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 2rem;
+  left: calc(100% - 2.5rem);
+  position: relative;
+  top: calc(-64px + 0.5rem);
+  width: 2rem;
+}
+.bistroTableModalCloseBtn::before, .bistroTableModalCloseBtn::after {
+  background: white;
+  content: "";
+  height: 0.2rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform-origin: center;
+  width: 2rem;
+}
+.bistroTableModalCloseBtn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.bistroTableModalCloseBtn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.bistroModalCloseBtnActive {
+  display: block;
+}
+
+.bistroTableMapEntranceText {
+  font-size: 1.2rem;
+  font-weight: normal;
+  writing-mode: sideways-rl;
+}
+
+.bistroTableMap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 0.5rem;
+  margin: 1rem;
+}
+.bistroTableMap > *:nth-child(odd) {
+  justify-self: start;
+}
+.bistroTableMap > *:nth-child(even) {
+  justify-self: end;
+}
+
+.bistroTableMapTable {
+  align-content: center;
+  background-color: #D9D9D9;
+  color: black;
+  height: 4rem;
+  width: 10rem;
+}
+.bistroTableMapTable h4 {
+  font-weight: normal;
+  text-align: center;
+}
+
+.bistroTableBooked {
+  background-color: #8b2929;
+}
+
+.bistroPlaceholderTableMapButton {
+  height: 3rem;
+  width: 5rem;
+}
+
+.info {
+  color: white;
+  background-color: #1E1E1E;
 }
