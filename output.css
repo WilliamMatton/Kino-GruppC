@@ -1,4 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #2a2a2a;
+  color: #ffffff;
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+/* ============================================================
+   ======================   CARDS   ============================
+   ============================================================ */
+.card {
+  background-color: white;
+  border: #011827;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.233);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.imageCard {
+  width: 100%;
+  height: 270px;
+  object-fit: fill;
+  display: block;
+}
+
+.cardTitle {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.cardInfo {
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.6rem;
+  margin: 0;
+  text-align: justify;
+}
+
+.datesInfo {
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.6rem;
+  margin: 0;
+  text-align: justify;
+}
+
 :root {
   --bg-dark: #231f20;
   --white: #ffffff;
@@ -317,21 +381,6 @@ body {
   color: #ffffff;
 }
 
-.headerPlaceholder {
-  padding: 20px;
-  background-color: #f0f0f0;
-  text-align: center;
-  border-bottom: 2px solid #ddd;
-}
-
-.footerPlaceholder {
-  padding: 20px;
-  background-color: #f0f0f0;
-  text-align: center;
-  border-top: 2px solid #ddd;
-  margin-top: auto;
-}
-
 .contactContainer {
   flex: 1;
   display: flex;
@@ -431,6 +480,7 @@ body {
 .memberpageDef {
   min-height: 100vh;
   font-family: Inter;
+  background-color: #2a2a2a;
   background-color: #231f20;
   background-color: #231F20;
   color: #ffffff;
@@ -491,6 +541,9 @@ h1.memberHone {
   color: #5c5c5c;
 }
 
+.scrollLock {
+  height: 100%;
+  overflow: hidden;
 .memberLoginWrap {
   width: 100%;
   height: auto;
@@ -664,6 +717,114 @@ a.memberForgotten:hover {
   font-weight: lighter;
   grid-column: 1/2;
   margin: 0.7rem 0;
+}
+
+.bistroModalOverlay {
+  align-items: center;
+  display: none;
+  background-color: rgba(255, 255, 255, 0.35);
+  inset: 0;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+}
+
+.bistroModalActive {
+  display: flex;
+}
+
+.bistroTableMapModal {
+  background-color: #231F20;
+  height: min(90vh, 600px);
+  width: min(90vw, 500px);
+  z-index: 2;
+}
+
+.bistroTableMapCounter {
+  align-content: center;
+  background-color: #D9D9D9;
+  border-radius: 0 0 8px 8px;
+  height: 64px;
+  justify-self: center;
+  width: 334px;
+}
+
+.bistroTableMapCounterText {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-align: center;
+}
+
+.bistroTableModalCloseBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 2rem;
+  left: calc(100% - 2.5rem);
+  position: relative;
+  top: calc(-64px + 0.5rem);
+  width: 2rem;
+}
+.bistroTableModalCloseBtn::before, .bistroTableModalCloseBtn::after {
+  background: white;
+  content: "";
+  height: 0.2rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform-origin: center;
+  width: 2rem;
+}
+.bistroTableModalCloseBtn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.bistroTableModalCloseBtn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.bistroModalCloseBtnActive {
+  display: block;
+}
+
+.bistroTableMapEntranceText {
+  font-size: 1.2rem;
+  font-weight: normal;
+  writing-mode: sideways-rl;
+}
+
+.bistroTableMap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 0.5rem;
+  margin: 1rem;
+}
+.bistroTableMap > *:nth-child(odd) {
+  justify-self: start;
+}
+.bistroTableMap > *:nth-child(even) {
+  justify-self: end;
+}
+
+.bistroTableMapTable {
+  align-content: center;
+  background-color: #D9D9D9;
+  color: black;
+  height: 4rem;
+  width: 10rem;
+}
+.bistroTableMapTable h4 {
+  font-weight: normal;
+  text-align: center;
+}
+
+.bistroTableBooked {
+  background-color: #8b2929;
+}
+
+.bistroPlaceholderTableMapButton {
+  height: 3rem;
+  width: 5rem;
 }
 
 .info {
