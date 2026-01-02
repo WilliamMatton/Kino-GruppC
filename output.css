@@ -619,9 +619,13 @@ a.memberForgotten:hover {
   text-decoration: underline;
 }
 
-.scrollLock {
-  height: 100%;
-  overflow: hidden;
+.iconBtn.active {
+  background: var(--pill-active);
+  color: var(--text-strong);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), var(--shadow-soft);
+}
+.iconBtn.active .fas.fa-user {
+  color: white; /* rgb(255, 100, 100); */
 }
 
 .bistroBody {

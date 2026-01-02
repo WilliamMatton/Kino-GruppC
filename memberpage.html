@@ -11,11 +11,36 @@
 </head>
 <body class="memberpageDef">
 
-    <header class="memberHeader" aria-role="header">
-        <!-- header with content plus Nav here -->
-        <p class="placeTemp">*header placeholder*</p>
+<header class="navbar">
+    <div class="gradientLineTop"></div>
 
-    </header>
+    <div class="navContainer">
+        <a href="index.html" target="_top" class="logo">
+            <div class="logoGlow"></div>
+            <img src="images/Proxima-B.gif" alt="Proxima Cinema Logo" class="logoImg">
+        </a>
+
+        <!-- Mobile nav toggle -->
+        <input type="checkbox" id="navToggle" class="navToggle" aria-label="Open main menu" />
+
+        <nav class="navLinks">
+            <a class="navLink" href="index.html" target="_top"><span>Visningar</span></a>
+            <a class="navLink" href="filmcard.html" target="_top"><span>Filmer</span></a>
+            <a class="navLink" href="bistro.html" target="_top"><span>Bistro/café</span></a>
+            <a class="navLink" href="contact.html" target="_top"><span>Kontakta oss</span></a>
+            <a class="navLink" href="aboutus.html" target="_top"><span>Om oss</span></a>
+        </nav>
+
+        <div class="navActions">
+            <button class="iconBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+            <button class="btnPrimary"><i class="fas fa-ticket-alt"></i><span>Boka biljett</span></button>
+            <a href="#"><button class="iconBtn active" aria-label="Account"><i class="fas fa-user"></i></button></a>
+            <label for="navToggle" class="iconBtn mobileMenu" aria-label="Menu"><i class="fas fa-bars"></i></label>
+        </div>
+    </div>
+
+    <div class="gradientLineBottom"></div>
+</header>
 
 
 <section class="memberWrap">
