@@ -628,6 +628,11 @@ a.memberForgotten:hover {
   color: white; /* rgb(255, 100, 100); */
 }
 
+.scrollLock {
+  height: 100%;
+  overflow: hidden;
+}
+
 .bistroBody {
   background-color: #231F20;
   color: white;
