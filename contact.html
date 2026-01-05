@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakta oss</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="output.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="gradientLineTop"></div>
+
+        <div class="navContainer">
+            <a href="index.html" class="logo">
+                <div class="logoGlow"></div>
+                <img src="images/Proxima-B.gif" alt="Proxima Cinema Logo" class="logoImg">
+            </a>
+
+            <input type="checkbox" id="navToggle" class="navToggle" aria-label="Open main menu" />
+
+            <nav class="navLinks">
+                <a class="navLink" href="index.html"><span>Visningar</span></a>
+                <a class="navLink" href="#"><span>Filmer</span></a>
+                <a class="navLink" href="bistro.html"><span>Bistro/café</span></a>
+                <a class="navLink active" href="contact.html"><span>Kontakta oss</span></a>
+                <a class="navLink" href="aboutUs.html"><span>Om oss</span></a>
+                <a class="navLink" href="about.html"><span>Om oss</span></a>
+            </nav>
+
+            <div class="navActions">
+                <button class="iconBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+                <button class="btnPrimary"><i class="fas fa-ticket-alt"></i><span>Boka biljett</span></button>
+                <button class="iconBtn" aria-label="Account"><i class="fas fa-user"></i></button>
+                <label for="navToggle" class="iconBtn mobileMenu" aria-label="Menu"><i class="fas fa-bars"></i></label>
+            </div>
+        </div>
+
+        <div class="gradientLineBottom"></div>
+    </header>
+
+    <main class="contactContainer">
+        <h1>Contact Us</h1>
+        <p>Har du en fråga? Vi uppsakatar att du från av dig!</p>
+        <form class="contactForm">
+            <div class="formGroup">
+                <label for="fullName">Ditt Namn</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Ditt Namn" required>
+            </div>
+
+            <div class="formGroup">
+                <label for="emailAddress">E-postadress</label>
+                <input type="email" id="emailAddress" name="emailAddress" placeholder="din@epost.com" required>
+            </div>
+
+            <div class="formGroup">
+                <label for="subjectText">Ämne</label>
+                <input type="text" id="subjectText" name="subjectText" placeholder="Vad handlar det om?" required>
+            </div>
+
+            <div class="formGroup">
+                <label for="messageText">Meddelande</label>
+                <textarea id="messageText" name="messageText" rows="5" placeholder="Skriv ditt meddelande här..." required></textarea>
+            </div>
+
+            <button type="submit" class="submitButton">Skicka Meddelande</button>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <div class="footerContainer">
+            <div class="footerSection">
+                <h4>Om Proxima Cinema</h4>
+                <p>Upplev det bästa inom biounderhållning med premium ljud samt bästa bildkvalitet.</p>
+            </div>
+
+            <div class="footerSection">
+                <h4>Länkar</h4>
+                <a href="index.html">Visningar</a>
+                <a href="#">Filmer</a>
+                <a href="bistro.html">Bistro/café</a>
+                <a href="contact.html">Kontakta oss</a>
+                <a href="aboutUs.html">Om oss</a>
+            </div>
+
+            <div class="footerSection">
+                <h4>Kontakt</h4>
+                <p>Vintergatan 42</p>
+                <p>(555) 123-4567</p>
+                <p><a href="mailto:info@proximacinema.com">info@proximacinema.com</a></p>
+            </div>
+        </div>
+
+        <p class="copyright">
+            © 2025 Proxima Cinema. All rights reserved.
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+}
+
+.contactContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.contactContainer h1 {
+    margin-bottom: 10px;
+    font-size: 3.5rem;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.contactContainer p {
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    text-align: center;
+}
+
+.contactForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formGroup label {
+    font-size: 15px;
+    font-weight: normal;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.formGroup input,
+.formGroup textarea {
+    padding: 16px 18px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    background-color: #3a3a3a;
+    color: #a0a0a0;
+    transition: background-color 0.3s;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+    color: #6a6a6a;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+    outline: none;
+    background-color: #404040;
+}
+
+.formGroup textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submitButton {
+    padding: 18px 28px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.submitButton:hover {
+    background-color: #f0f0f0;
+}
+
+.submitButton:active {
+    transform: scale(0.98);
+}
