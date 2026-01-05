@@ -1,40 +1,115 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medlemsklubb</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="output.css">
 </head>
+
 <body class="memberpageDef">
 
-    <header class="memberHeader" aria-role="header">
-        <!-- header with content plus Nav here -->
-        <p class="placeTemp">*header placeholder*</p>
+    <header class="navbar">
+        <div class="gradientLineTop"></div>
 
+        <div class="navContainer">
+            <a href="index.html" target="_top" class="logo">
+                <div class="logoGlow"></div>
+                <img src="images/Proxima-B.gif" alt="Proxima Cinema Logo" class="logoImg">
+            </a>
+
+            <!-- Mobile nav toggle -->
+            <input type="checkbox" id="navToggle" class="navToggle" aria-label="Open main menu" />
+
+            <nav class="navLinks">
+                <a class="navLink" href="index.html" target="_top"><span>Visningar</span></a>
+                <a class="navLink" href="filmcard.html" target="_top"><span>Filmer</span></a>
+                <a class="navLink" href="bistro.html" target="_top"><span>Bistro/café</span></a>
+                <a class="navLink" href="contact.html" target="_top"><span>Kontakta oss</span></a>
+                <a class="navLink" href="aboutus.html" target="_top"><span>Om oss</span></a>
+            </nav>
+
+            <div class="navActions">
+                <button class="iconBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+                <button class="btnPrimary"><i class="fas fa-ticket-alt"></i><span>Boka biljett</span></button>
+                <a href="#"><button class="iconBtn active" aria-label="Account"><i class="fas fa-user"></i></button></a>
+                <label for="navToggle" class="iconBtn mobileMenu" aria-label="Menu"><i class="fas fa-bars"></i></label>
+            </div>
+        </div>
+
+        <div class="gradientLineBottom"></div>
     </header>
 
 
-<section class="memberWrap">
-    <p class="memberWmark">Proxima B</p>
-    <h1 class="memberHone">Medlems inlogg !</h1>
-        <!-- member login content here -->
+    <section class="memberWrap">
 
-        <!-- <form> for login -->
-        <p class="placeTemp">*formulär för medlems inlogg*</p>
+        <section class="memberLoginWrap">
+            <p class="memberWmark">Proxima B</p>
+
+            <h1 class="memberHone">Medlemsinlogg</h1>
+            <h2 class="memberTitle">Logga in p&aring; din Medlemssida</h2>
+
+            <div class="memberInputWrap">
+                <div class="centerDiv">
+                    <label class="memberLabel" for="medlemsNamn">Medlemsnamn</label>
+                    <input id="medlemsNamn" class="memberLoginInput" type="text">
+
+                    <label class="memberLabel" for="password">L&ouml;senord</label>
+                    <input id="memberPassword" class="memberLoginInputSec" type="password" name="password" minlength="8"
+                        required>
+
+                    <a href="#" class="memberForgotten">Gl&ouml;mt l&ouml;senord eller medlemsnamn ?</a>
+
+                    <button id="memberLoginButton" class="memberButton">Logga in</button>
+                </div>
+            </div>
+        </section>
 
         <!-- Other info ? -->
         <p class="placeTemp">*information om medlemsskap och pris (om ej medlem)*</p>
 
-</section>
+    </section>
 
 
-    <footer class="memberFooter" aria-role="footer">
-        <!-- header with content plus Nav here -->
-        <p class="placeTemp">*footer placeholder*</p>
+    <footer class="footer" aria-role="footer">
+        <div class="footerContainer">
+            <div class="footerSection">
+                <h4>Om Proxima Cinema</h4>
+                <p>Upplev det bästa inom biounderhållning med premium ljud samt bästa bildkvalitet.</p>
+                <div class="footerSocial">
+                    <a href="#" class="socialIcon" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="socialIcon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="socialIcon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="socialIcon" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footerSection">
+                <h4>Länkar</h4>
+                <a href="index.html" target="_top">Visningar</a>
+                <a href="filmcard.html" target="_top">Filmer</a>
+                <a href="bistro.html" target="_top">Bistro/café</a>
+                <a href="contact.html" target="_top">Kontakta oss</a>
+                <a href="aboutus.html" target="_top">Om oss</a>
+            </div>
+
+            <div class="footerSection">
+                <h4>Kontakt</h4>
+                <p>Vintergatan 42</p>
+                <p>(555) 123-4567</p>
+                <p><a href="mailto:info@proximacinema.com">info@proximacinema.com</a></p>
+            </div>
+        </div>
+
+        <p class="copyright">
+            © 2025 Proxima Cinema. All rights reserved.
+        </p>
     </footer>
 
 </body>
