@@ -209,7 +209,133 @@ body {
   }
 }
 
-.footer {
+.moviesSection {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 32px 0 72px 0;
+}
+
+.moviesTitle {
+  margin: 0 0 12px 24px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-strong);
+}
+
+.moviesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding: 0 24px;
+}
+
+.dateGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dateHeader {
+  margin: 0 0 14px 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dateHeader::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(211, 210, 214, 0.2);
+}
+
+.dateMoviesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 190px));
+  gap: 12px;
+  justify-content: start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  align-items: flex-start;
+  position: relative;
+  padding: 8px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: rgba(211, 210, 214, 0.3);
+}
+
+.imageCard {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.cardBookBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px 16px;
+  background: var(--white);
+  color: #1b1515;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.card:hover .cardBookBtn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #d3d2d6;
+}
+
+.cardGenre {
+  padding: 5px 8px;
+  font-size: 0.85rem;
+  color: #d3d2d6;
+  background: #2a2626;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.cardTime {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: #d3d2d6;
+}
+
+
+  .footer {
   background: var(--bg-dark);
   border-top: 1px solid var(--border-soft);
   padding: 64px 48px 32px;
