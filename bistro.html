@@ -10,7 +10,37 @@
   <link rel="stylesheet" type="text/css" href="output.css">
 </head>
 <body class="bistroBody">
-  <header>Header</header>
+  <header class="navbar">
+    <div class="gradientLineTop"></div>
+
+    <div class="navContainer">
+      <a href="#" class="logo">
+        <div class="logoGlow"></div>
+        <img src="images/Proxima-B.gif" alt="Proxima Cinema Logo" class="logoImg">
+      </a>
+
+      <!-- Mobile nav toggle -->
+      <input type="checkbox" id="navToggle" class="navToggle" aria-label="Open main menu" />
+
+      <nav class="navLinks">
+        <a class="navLink" href="index.html"><span>Visningar</span></a>
+        <a class="navLink" href="filmcard.html"><span>Filmer</span></a>
+        <a class="navLink active" href="bistro.html"><span>Bistro/café</span></a>
+        <a class="navLink" href="contact.html"><span>Kontakta oss</span></a>
+        <a class="navLink" href="aboutus.html"><span>Om oss</span></a>
+      </nav>
+
+      <div class="navActions">
+        <button class="iconBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+        <button class="btnPrimary"><i class="fas fa-ticket-alt"></i><span>Boka biljett</span></button>
+        <button class="iconBtn" aria-label="Account"><i class="fas fa-user"></i></button>
+        <label for="navToggle" class="iconBtn mobileMenu" aria-label="Menu"><i class="fas fa-bars"></i></label>
+      </div>
+    </div>
+
+    <div class="gradientLineBottom"></div>
+  </header>
+  
   <h2 class="bistroPageHeading">Bistro</h2>
   <main class="bistroMain">
     <section class="bistroMenu">
