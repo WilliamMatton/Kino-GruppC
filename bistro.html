@@ -44,7 +44,7 @@
   <h2 class="bistroPageHeading">Bistro</h2>
   <main class="bistroMain">
     <section class="bistroMenu">
-      <h3 class="bistroMenuHeading">Vår Meny</h3>
+      <h3 class="bistroPageSubHeading">Vår Meny</h3>
 
       <article class="bistroMenuGroup">
         <h4 class="bistroMenuGroupHeading">FÖRRÄTTER</h4>
@@ -104,7 +104,28 @@
       </article>
     </section>
 
-    <input type="button" class="bistroPlaceholderTableMapButton" value="Välj bord">
+    <section class="bistroBookingSection">
+      <h3 class="bistroPageSubHeading">Boka Bord</h3>
+      <form class="bistroBookingPanel">
+        <label for="bistroBookingNameField" id="bistroBookingNameLabel">Namn</label>
+        <input type="text" class="bistroBookingInput" id="bistroBookingNameField" required>
+        <label for="bistroBookingEmailField" id="bistroBookingEmailLabel">Email</label>
+        <input type="email" class="bistroBookingInput" id="bistroBookingEmailField" required>
+        <label for="bistroBookingDateField" id="bistroBookingDateLabel">Datum</label>
+        <input type="date" class="bistroBookingInput" id="bistroBookingDateField" required>
+        <label for="bistroBookingTimeField" id="bistroBookingTimeLabel">Tid</label>
+        <input type="time" class="bistroBookingInput" id="bistroBookingTimeField" required>
+        <label for="bistroBookingGuestsField" id="bistroBookingGuestsLabel">Gäster</label>
+        <input type="number" class="bistroBookingInput" id="bistroBookingGuestsField" min="1" max="6" required>
+        <label for="bistroBookingTableButton" id="bistroBookingTableLabel">Bord</label>
+        <input type="button" class="bistroBookingButton" id="bistroBookingTableButton" value="Välj Bord">
+        <label for="bistroBookingTableMovieCheckbox" id="bistroBookingMovieLabel">Jag vill se film vid bordet
+          <br><span class="bistroBookingMovieLabelDesc">Gäster väljer specifik film vid bordet</span>
+        </label>
+        <input type="checkbox" class="bistroBookingCheckbox" id="bistroBookingTableMovieCheckbox">
+        <input type="submit" class="bistroBookingButton" id="bistroBookingSubmitButton" value="Boka">
+      </form>
+    </section>
     
     <div class="bistroModalOverlay">
       <div class="bistroTableMapModal">

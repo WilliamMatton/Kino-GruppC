@@ -20,14 +20,15 @@
   display: flex;
   flex-direction: row;
   gap: 102px;
-  margin: 0 145px;
+  justify-self: center;
+  margin: 0 auto;
 }
 
-.bistroMenu {
+.bistroMenu, .bistroBookingSection {
   width: 450px;
 }
 
-.bistroMenuHeading {
+.bistroPageSubHeading {
   justify-self: center;
   border-bottom: 0.4rem solid white;
   font-size: 1rem;
@@ -75,6 +76,89 @@
   font-weight: lighter;
   grid-column: 1 / 2;
   margin: 0.7rem 0;
+}
+
+.bistroBookingPanel {
+  background-color: white;
+  border-radius: 8px;
+  color: black;
+  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: calc(50% - 0.5rem) calc(50% - 0.5rem);
+  height: 500px;
+  margin-top: 48px;
+  padding: 1.5rem 2rem;
+}
+
+.bistroBookingInput {
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 1rem;
+  height: 2.3rem;
+  padding: 0 0.5rem;
+}
+
+.bistroBookingButton {
+  background-color: black;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Inter';
+  font-size: 1rem;
+  font-weight: lighter;
+  height: 2.5rem;
+}
+
+.bistroBookingCheckbox {
+  height: 1rem;
+  width: 1rem;
+}
+
+#bistroBookingNameLabel,
+#bistroBookingNameField,
+#bistroBookingEmailLabel,
+#bistroBookingEmailField,
+#bistroBookingMovieLabel,
+#bistroBookingTableMovieCheckbox,
+#bistroBookingSubmitButton {
+  grid-column: 1 / 3;
+}
+
+#bistroBookingDateLabel,
+#bistroBookingDateField,
+#bistroBookingGuestsLabel,
+#bistroBookingGuestsField {
+  grid-column: 1 / 2;
+}
+
+#bistroBookingTimeLabel,
+#bistroBookingTimeField,
+#bistroBookingTableLabel,
+#bistroBookingTableButton {
+  grid-column: 2 / 3;
+}
+
+#bistroBookingDateLabel,
+#bistroBookingTimeLabel {
+  grid-row: 5 / 6;
+}
+
+#bistroBookingGuestsLabel,
+#bistroBookingTableLabel {
+  grid-row: 7 / 8;
+}
+
+#bistroBookingMovieLabel,
+#bistroBookingTableMovieCheckbox {
+  grid-row: 9 / 10;
+}
+
+#bistroBookingMovieLabel {
+  margin-left: 1.8rem;
+}
+
+.bistroBookingMovieLabelDesc {
+  color: #757575;
 }
 
 .bistroModalOverlay {
