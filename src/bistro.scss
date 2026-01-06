@@ -168,7 +168,7 @@
   inset: 0;
   justify-content: center;
   position: fixed;
-  z-index: 1;
+  z-index: 1002;
 }
 
 .bistroModalActive {
@@ -179,7 +179,7 @@
   background-color: #231F20;
   height: min(90vh, 600px);
   width: min(90vw, 500px);
-  z-index: 2;
+  z-index: 1003;
 }
 
 .bistroTableMapCounter {
