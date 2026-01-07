@@ -157,6 +157,94 @@ a.memberForgotten {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), var(--shadow-soft);
 
   .fas.fa-user {
-    color: white; /* rgb(255, 100, 100); */
+    color: white;
   }
+}
+
+.memberInfoWrap {
+  max-width: 30em;
+  margin: auto;
+  padding: 0 0 4em 0;
+
+  @media (min-width: 460px) {
+  max-width: 30em;
+  }
+}
+
+.memberInfoWrap {
+  width: 100vw;
+  margin: auto;
+
+  @media (max-width: 459px) {
+  max-width: 22em;
+  }
+}
+
+#memberInfoTable {
+  font-family: Inter;
+  font-size: 1em;
+  letter-spacing: 1px;
+  text-align: left;
+
+  @media (min-width: 460px) {
+  width: 100%;
+  }
+}
+
+#memberInfoTable {
+  border-collapse: collapse;
+  font-family: Inter;
+  font-size: 1em;
+  letter-spacing: 1px;
+  text-align: left;
+
+  @media (max-width: 459px) {
+  width: 100%;
+  font-size: 0.9em;
+  }
+}
+
+.memberInfoCaption {
+  caption-side: top;
+  padding: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.memberInfoText {
+  vertical-align: top;
+}
+
+.memberPrice {
+  vertical-align: bottom;
+}
+
+.mth1, .mth2, .mtd1, .mtd2 {
+  padding: 10px 10px;
+}
+
+.mth1 {
+  width: 60%;
+}
+
+.mth2 {
+  width: 40%;
+}
+
+.mth2, .mtd2 {
+  padding-left: 2em;
+}
+
+tr.memberTableRows {
+  border-top: 1px solid #453f41;
+}
+
+#memberPurchaseButton {
+  width: 7em;
+  height: 3em;
+  font-family: Inter;
+  border-radius: .7em;
+  font-size: .9em;
+  font-weight: 600;
+  cursor: pointer;
 }
