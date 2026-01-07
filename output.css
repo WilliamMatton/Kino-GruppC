@@ -1,55 +1,4 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
-/* ============================================================
-   ======================   CARDS   ============================
-   ============================================================ */
-.card {
-  background-color: white;
-  border: #011827;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.233);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  width: 100%;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.imageCard {
-  width: 100%;
-  height: 270px;
-  object-fit: fill;
-  display: block;
-}
-
-.cardTitle {
-  font-size: 1.6rem;
-  font-weight: 400;
-  text-align: left;
-  margin-left: 0.6rem;
-  margin-top: 0.5rem;
-}
-
-.cardInfo {
-  font-size: 1rem;
-  font-weight: 400;
-  padding: 0.6rem;
-  margin: 0;
-  text-align: justify;
-}
-
-.datesInfo {
-  font-size: 1rem;
-  font-weight: 400;
-  padding: 0.6rem;
-  margin: 0;
-  text-align: justify;
-}
-
 :root {
   --bg-dark: #231f20;
   --white: #ffffff;
@@ -247,6 +196,131 @@ body {
     order: 2;
   }
 }
+.moviesSection {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 32px 0 72px 0;
+}
+
+.moviesTitle {
+  margin: 0 0 12px 24px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-strong);
+}
+
+.moviesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding: 0 24px;
+}
+
+.dateGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dateHeader {
+  margin: 0 0 14px 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dateHeader::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(211, 210, 214, 0.2);
+}
+
+.dateMoviesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 190px));
+  gap: 12px;
+  justify-content: start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  align-items: flex-start;
+  position: relative;
+  padding: 8px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: rgba(211, 210, 214, 0.3);
+}
+
+.imageCard {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.cardBookBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px 16px;
+  background: var(--white);
+  color: #1b1515;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.card:hover .cardBookBtn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #d3d2d6;
+}
+
+.cardGenre {
+  padding: 5px 8px;
+  font-size: 0.85rem;
+  color: #d3d2d6;
+  background: #2a2626;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+}
+
+.cardTime {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: #d3d2d6;
+}
+
 .footer {
   background: var(--bg-dark);
   border-top: 1px solid var(--border-soft);
@@ -650,14 +724,15 @@ a.memberForgotten:hover {
   display: flex;
   flex-direction: row;
   gap: 102px;
-  margin: 0 145px;
+  justify-self: center;
+  margin: 0 auto;
 }
 
-.bistroMenu {
+.bistroMenu, .bistroBookingSection {
   width: 450px;
 }
 
-.bistroMenuHeading {
+.bistroPageSubHeading {
   justify-self: center;
   border-bottom: 0.4rem solid white;
   font-size: 1rem;
@@ -707,6 +782,89 @@ a.memberForgotten:hover {
   margin: 0.7rem 0;
 }
 
+.bistroBookingPanel {
+  background-color: white;
+  border-radius: 8px;
+  color: black;
+  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: calc(50% - 0.5rem) calc(50% - 0.5rem);
+  height: 500px;
+  margin-top: 48px;
+  padding: 1.5rem 2rem;
+}
+
+.bistroBookingInput {
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 1rem;
+  height: 2.3rem;
+  padding: 0 0.5rem;
+}
+
+.bistroBookingButton {
+  background-color: black;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: "Inter";
+  font-size: 1rem;
+  font-weight: lighter;
+  height: 2.5rem;
+}
+
+.bistroBookingCheckbox {
+  height: 1rem;
+  width: 1rem;
+}
+
+#bistroBookingNameLabel,
+#bistroBookingNameField,
+#bistroBookingEmailLabel,
+#bistroBookingEmailField,
+#bistroBookingMovieLabel,
+#bistroBookingTableMovieCheckbox,
+#bistroBookingSubmitButton {
+  grid-column: 1/3;
+}
+
+#bistroBookingDateLabel,
+#bistroBookingDateField,
+#bistroBookingGuestsLabel,
+#bistroBookingGuestsField {
+  grid-column: 1/2;
+}
+
+#bistroBookingTimeLabel,
+#bistroBookingTimeField,
+#bistroBookingTableLabel,
+#bistroBookingTableButton {
+  grid-column: 2/3;
+}
+
+#bistroBookingDateLabel,
+#bistroBookingTimeLabel {
+  grid-row: 5/6;
+}
+
+#bistroBookingGuestsLabel,
+#bistroBookingTableLabel {
+  grid-row: 7/8;
+}
+
+#bistroBookingMovieLabel,
+#bistroBookingTableMovieCheckbox {
+  grid-row: 9/10;
+}
+
+#bistroBookingMovieLabel {
+  margin-left: 1.8rem;
+}
+
+.bistroBookingMovieLabelDesc {
+  color: #757575;
+}
+
 .bistroModalOverlay {
   align-items: center;
   display: none;
@@ -714,7 +872,7 @@ a.memberForgotten:hover {
   inset: 0;
   justify-content: center;
   position: fixed;
-  z-index: 1;
+  z-index: 1002;
 }
 
 .bistroModalActive {
@@ -725,7 +883,7 @@ a.memberForgotten:hover {
   background-color: #231F20;
   height: min(90vh, 600px);
   width: min(90vw, 500px);
-  z-index: 2;
+  z-index: 1003;
 }
 
 .bistroTableMapCounter {
