@@ -96,22 +96,25 @@ h1.memberHone {
 #mascotImage {
   position: absolute;
   z-index: 99;
-  top: 1.4em;
-  right: 1.4em;
+  top: 1.2em;
+  right: 2em;
   background-image: url("/images/proximab_membersclub_image1.png");
+  border-radius: 50%;
+  opacity: .8;
 
   @media (min-width: 540px) {
   width: 5em;
   }
 
   @media (min-width: 490px) and (max-width: 539px) {
-  width: 4em;
+  width: 4.1em;
+  right: 1.6em;
   }
 
   @media (min-width: 370px) and (max-width: 489px) {
   top: 1.2em;
   right: 1.2em;
-  width: 2.8em;
+  width: 3em;
   }
 
   @media (max-width: 369px) {
