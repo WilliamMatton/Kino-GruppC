@@ -61,6 +61,7 @@ h1.memberHone {
 }
 
 .memberLoginWrap {
+  position: relative;
   width: 100%;
   height: auto;
   background-color: #272324;
@@ -69,34 +70,7 @@ h1.memberHone {
   border-radius: 1em;
 }
 
-.memberTitle {
-  color: #9ca3af;
-  font-size: .9em;
-  font-weight: 400;
-  margin-top: 10px;
-}
-
-.memberInputWrap {
-  margin: 0 auto;
-
-  @media (min-width: 460px) {
-  width: 70%;
-  height: 22em;
-  padding: 1em;
-  }
-}
-
-.memberInputWrap {
-  margin: 0 auto;
-
-  @media (max-width: 459px) {
-  width: 92%;
-  height: 20em;
-  padding: 1em;
-  }
-}
-
-#mascotImage {
+.mascotImage {
   position: absolute;
   z-index: 99;
   top: 1.2em;
@@ -123,6 +97,33 @@ h1.memberHone {
   top: 1em;
   right: 1em;
   width: 2.2em;
+  }
+}
+
+.memberTitle {
+  color: #9ca3af;
+  font-size: .9em;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.memberInputWrap {
+  margin: 0 auto;
+
+  @media (min-width: 460px) {
+  width: 70%;
+  height: 22em;
+  padding: 1em;
+  }
+}
+
+.memberInputWrap {
+  margin: 0 auto;
+
+  @media (max-width: 459px) {
+  width: 92%;
+  height: 20em;
+  padding: 1em;
   }
 }
 
