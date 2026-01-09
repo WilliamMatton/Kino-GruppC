@@ -602,12 +602,47 @@ h1.memberHone {
 }
 
 .memberLoginWrap {
+  position: relative;
   width: 100%;
   height: auto;
   background-color: #272324;
   margin: 0 auto;
   border: 1px solid #453f41;
   border-radius: 1em;
+}
+
+.mascotImage {
+  position: absolute;
+  z-index: 99;
+  top: 1.2em;
+  right: 2em;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+@media (min-width: 540px) {
+  .mascotImage {
+    width: 5em;
+  }
+}
+@media (min-width: 490px) and (max-width: 539px) {
+  .mascotImage {
+    width: 4.1em;
+    right: 1.6em;
+  }
+}
+@media (min-width: 370px) and (max-width: 489px) {
+  .mascotImage {
+    top: 1.2em;
+    right: 1.2em;
+    width: 3em;
+  }
+}
+@media (max-width: 369px) {
+  .mascotImage {
+    top: 1em;
+    right: 1em;
+    width: 2.2em;
+  }
 }
 
 .memberTitle {
@@ -636,40 +671,6 @@ h1.memberHone {
     width: 92%;
     height: 20em;
     padding: 1em;
-  }
-}
-
-#mascotImage {
-  position: absolute;
-  z-index: 99;
-  top: 1.2em;
-  right: 2em;
-  border-radius: 50%;
-  opacity: 0.8;
-}
-@media (min-width: 540px) {
-  #mascotImage {
-    width: 5em;
-  }
-}
-@media (min-width: 490px) and (max-width: 539px) {
-  #mascotImage {
-    width: 4.1em;
-    right: 1.6em;
-  }
-}
-@media (min-width: 370px) and (max-width: 489px) {
-  #mascotImage {
-    top: 1.2em;
-    right: 1.2em;
-    width: 3em;
-  }
-}
-@media (max-width: 369px) {
-  #mascotImage {
-    top: 1em;
-    right: 1em;
-    width: 2.2em;
   }
 }
 
@@ -826,11 +827,6 @@ tr.memberTableRows {
   font-size: 0.9em;
   font-weight: 600;
   cursor: pointer;
-}
-
-.scrollLock {
-  height: 100%;
-  overflow: hidden;
 }
 
 .scrollLock {
