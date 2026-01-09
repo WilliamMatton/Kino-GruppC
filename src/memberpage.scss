@@ -61,7 +61,6 @@ h1.memberHone {
 }
 
 .memberLoginWrap {
-  position: relative;
   width: 100%;
   height: auto;
   background-color: #272324;
@@ -85,6 +84,10 @@ h1.memberHone {
   height: 22em;
   padding: 1em;
   }
+}
+
+.memberInputWrap {
+  margin: 0 auto;
 
   @media (max-width: 459px) {
   width: 92%;
@@ -172,7 +175,6 @@ h1.memberHone {
 a.memberForgotten {
   color: #5D8FE5;
   text-decoration: none;
-  font-size: .9em;
 
    &:hover {
       text-decoration: underline;
