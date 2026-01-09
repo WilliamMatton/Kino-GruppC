@@ -602,7 +602,6 @@ h1.memberHone {
 }
 
 .memberLoginWrap {
-  position: relative;
   width: 100%;
   height: auto;
   background-color: #272324;
@@ -628,46 +627,15 @@ h1.memberHone {
     padding: 1em;
   }
 }
+
+.memberInputWrap {
+  margin: 0 auto;
+}
 @media (max-width: 459px) {
   .memberInputWrap {
     width: 92%;
     height: 20em;
     padding: 1em;
-  }
-}
-
-#mascotImage {
-  position: absolute;
-  z-index: 99;
-  top: 1.2em;
-  right: 2em;
-  background-image: url("/images/proximab_membersclub_image1.png");
-  border-radius: 50%;
-  opacity: 0.8;
-}
-@media (min-width: 540px) {
-  #mascotImage {
-    width: 5em;
-  }
-}
-@media (min-width: 490px) and (max-width: 539px) {
-  #mascotImage {
-    width: 4.1em;
-    right: 1.6em;
-  }
-}
-@media (min-width: 370px) and (max-width: 489px) {
-  #mascotImage {
-    top: 1.2em;
-    right: 1.2em;
-    width: 3em;
-  }
-}
-@media (max-width: 369px) {
-  #mascotImage {
-    top: 1em;
-    right: 1em;
-    width: 2.2em;
   }
 }
 
@@ -720,7 +688,6 @@ h1.memberHone {
 a.memberForgotten {
   color: #5D8FE5;
   text-decoration: none;
-  font-size: 0.9em;
 }
 a.memberForgotten:hover {
   text-decoration: underline;
