@@ -1105,63 +1105,97 @@ tr.memberTableRows {
   background-color: #1E1E1E;
 }
 
-.picture img {
-  display: block;
+.cafe {
+  background-color: #1f1b1b;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+.cafe-page {
+  max-width: 1200px;
   margin: 0 auto;
-  margin-top: 30px;
-  width: 30%;
-  height: 50%;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 4rem 2rem;
 }
 
-.middleContent {
+.cafe-title {
   text-align: center;
-  justify-content: center;
-  margin: 0% auto;
-  width: 60%;
-  padding: 40px 20px;
-  border-bottom: 1px solid var(--border-soft);
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 4rem;
 }
 
-.infoSquares {
+.cafe-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25rem;
+  align-items: start;
+}
+
+.cafe-menu {
+  max-width: 500px;
+}
+
+.cafe-menu h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ffffff;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.menu-item {
   display: flex;
-  justify-content: space-around;
-  padding: 20px;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  width: 650px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.square {
-  background-color: #2E2E2E;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  flex: 1 1 200px;
-  color: white;
+.price {
+  font-weight: 500;
 }
 
-.leftContent {
-  text-align: center;
-  margin-top: 20px;
+.cafe-hours {
+  justify-self: end;
 }
 
-@media (max-width: 768px) {
-  .picture img {
-    width: 80%;
-    height: auto;
+.cafe-hours h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ffffff;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.cafe-hours p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .cafe-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
-  .middleContent {
-    width: 90%;
-    padding: 20px 10px;
+  .cafe-menu,
+  .cafe-hours {
+    justify-self: center;
+    text-align: center;
   }
-  .infoSquares {
-    width: 100%;
-    flex-direction: column;
-  }
-  .square {
-    width: 100%;
-  }
+}
+.cafe-hours {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.cafe-hours .logoImg {
+  align-self: flex-end;
+  margin-top: 2.5rem;
 }
