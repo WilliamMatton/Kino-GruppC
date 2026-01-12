@@ -6,41 +6,108 @@
     <title>About us</title>
     <link rel="stylesheet" href="output.css">
 </head>
+
+<header class="navbar">
+<div class="gradientLineTop"></div>
+
+<div class="navContainer">
+    <a href="#" class="logo">
+    <div class="logoGlow"></div>
+    <img src="images/Proxima-B.gif" alt="Proxima Cinema Logo" class="logoImg">
+    </a>
+
+    <!-- Mobile nav toggle -->
+    <input type="checkbox" id="navToggle" class="navToggle" aria-label="Open main menu" />
+
+    <nav class="navLinks">
+        <a class="navLink" href="index.html" target="_top"><span>Visningar</span></a>
+        <a class="navLink" href="filmcard.html" target="_top"><span>Filmer</span></a>
+        <a class="navLink" href="bistro.html" target="_top"><span>Bistro/café</span></a>
+        <a class="navLink" href="contact.html" target="_top"><span>Kontakta oss</span></a>
+        <a class="navLink" href="aboutus.html" target="_top"><span>Om oss</span></a>
+    </nav>
+
+    <div class="navActions">
+    <button class="iconBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+    <button class="btnPrimary"><i class="fas fa-ticket-alt"></i><span>Boka biljett</span></button>
+    <button class="iconBtn" aria-label="Account"><i class="fas fa-user"></i></button>
+    <label for="navToggle" class="iconBtn mobileMenu" aria-label="Menu"><i class="fas fa-bars"></i></label>
+    </div>
+</div>
+
+<div class="gradientLineBottom"></div>
+</header>
+
 <body>
     <div class="info">
         <div class ="middleContent">
             <h1>Om oss</h1>
-            <p>loremipsum</p>
+            <p>Välkommen till Proxima Bio – universums mest avlägsna biograf. Belägen på den mystiska exoplaneten Proxima B bjuder vi på filmupplevelser som är lika storslagna som kosmos självt. Här möts interstellär teknik och klassisk biokänsla i en atmosfär där stjärnhimlen aldrig slocknar. Oavsett om du är jordbo eller rymdresenär är du alltid välkommen att slå dig ner, luta dig tillbaka och njuta av film bortom tid och rum.</p>
         </div>
         <div class="picture">
-            <img src="#" alt="Om oss bild">
+            <img src="images\ProximaBCinema.png" alt="Om oss bild på Proxima B biografen">
         </div>
         <div class ="middleContent">
             <h2>Bli medlem</h2>
             <p>loremipsum</p>
-            <a class= "memberBtn" href="#">Bli medlem</a>
+            <a class= "memberBtn" href="./memberpage.html">Bli medlem</a>
         </div>
         <div class ="leftContent">
             <h2>Vår utrustning</h2>
-            <p>loremipsum</p>
         </div>
         <div class="infoSquares">
             <div class="square">
-                <p>loremipsum</p>
+                <p>Holografiska projektorer<br><br>
+Våra avancerade holografiska projektorer visar filmer i flerdimensionell upplösning och skapar en bild som sträcker sig långt bortom den traditionella bioduken.</p>
             </div>
             <div class="square">
-                <p>loremipsum</p>
+                <p>Gravitationsanpassade biosäten<br><br>
+Biosätena justeras automatiskt efter Proxima B:s gravitation och besökarens kropp, vilket ger maximal komfort under hela föreställningen.</p>
             </div>
             <div class="square">
-                <p>loremipsum</p>
+                <p>Kvantbaserat ljudsystem<br><br>
+Ett toppmodernt ljudsystem med kvantresonans omsluter publiken med ett kristallklart och djupt ljud som känns lika mycket som det hörs.</p>
             </div>
             <div class="square">
-                <p>loremipsum</p>
+                <p>Transparenta rymdsköldar<br><br>
+Våra salonger är skyddade av osynliga rymdsköldar som filtrerar strålning och samtidigt ger en spektakulär utsikt över rymden, utan att störa filmupplevelsen.</p>
             </div>
         </div>
     </div>
 </body>
-<footer>
-    <p>© 2024 Company Name. All rights reserved.</p>
+
+<footer class="footer">
+<div class="footerContainer">
+    <div class="footerSection">
+    <h4>Om Proxima Cinema</h4>
+    <p>Upplev det bästa inom biounderhållning med premium ljud samt bästa bildkvalitet.</p>
+    <div class="footerSocial">
+        <a href="#" class="socialIcon" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" class="socialIcon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="socialIcon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="socialIcon" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+    </div>
+
+    <div class="footerSection">
+    <h4>Länkar</h4>
+        <a href="index.html" target="_top">Visningar</a>
+        <a href="filmcard.html" target="_top">Filmer</a>
+        <a href="bistro.html" target="_top">Bistro/café</a>
+        <a href="contact.html" target="_top">Kontakta oss</a>
+        <a href="aboutus.html" target="_top">Om oss</a>
+    </div>
+
+    <div class="footerSection">
+    <h4>Kontakt</h4>
+    <p>Vintergatan 42</p>
+    <p>(555) 123-4567</p>
+    <p><a href="mailto:info@proximacinema.com">info@proximacinema.com</a></p>
+    </div>
+</div>
+
+<p class="copyright">
+    © 2025 Proxima Cinema. All rights reserved.
+</p>
 </footer>
 </html>

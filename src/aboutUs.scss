@@ -2,3 +2,67 @@
     color: white;
     background-color: #1E1E1E;
 }
+
+.picture img {
+    display:block;
+    margin:0 auto;
+    margin-top: 30px;
+    width: 30%;
+    height: 50%;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.middleContent {
+    text-align: center;
+    justify-content: center;
+    margin: 0% auto;
+    width: 60%;
+    padding: 40px 20px;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.infoSquares {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 650px;
+}
+.square {
+    background-color: #2E2E2E;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    flex: 1 1 200px;
+    color: white;
+}
+
+.leftContent {
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+
+    .picture img {
+        width: 80%;
+        height: auto;
+    }
+
+    .middleContent {
+        width: 90%;
+        padding: 20px 10px;
+    }
+
+    .infoSquares {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .square {
+        width: 100%;
+    }
+}

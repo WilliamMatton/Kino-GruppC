@@ -1,0 +1,72 @@
+.cafe {
+  background-color: #1f1b1b;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.cafe-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.cafe-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 4rem;
+}
+
+.cafe-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25rem;
+  align-items: start;
+}
+
+.cafe-menu {
+  max-width: 500px;
+}
+
+.cafe-menu h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ffffff;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.price {
+  font-weight: 500;
+}
+
+.cafe-hours {
+  justify-self: end;
+}
+
+.cafe-hours h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ffffff;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.cafe-hours p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+
