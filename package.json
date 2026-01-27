@@ -8,9 +8,15 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --no-source-map src/main.scss output.css",
-    "watch-sass": "sass --watch --no-source-map src/main.scss output.css"
+    "watch-sass": "sass --watch --no-source-map src/main.scss output.css",
+    "start": "node server.js",
+    "test": "jest"
   },
   "dependencies": {
-    "sass": "^1.96.0"
+    "cross-env": "^10.1.0",
+    "express": "^5.2.1",
+    "jest": "^30.2.0",
+    "sass": "^1.96.0",
+    "supertest": "^7.2.2"
   }
 }
