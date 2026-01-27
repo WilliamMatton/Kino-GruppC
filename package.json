@@ -7,8 +7,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --no-source-map src/main.scss output.css",
-    "watch-sass": "sass --watch --no-source-map src/main.scss output.css",
+    "sass": "sass --no-source-map src/main.scss static/output.css",
+    "watch-sass": "sass --watch --no-source-map src/main.scss static/output.css",
     "start": "node server.js",
     "test": "jest"
   },
