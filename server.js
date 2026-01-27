@@ -1,9 +1,5 @@
-const http = require('http')
-const fs = require('fs')
-const path = require('path')
+import express from 'express';
 
-const port = Number(process.env.PORT) || 5080
+const server = express();
 
-server.listen(port, () => {
-	console.log(`Server running at http://localhost:${port}`)
-})
+server.listen(5080);
