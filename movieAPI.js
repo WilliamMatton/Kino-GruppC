@@ -6,8 +6,15 @@ async function getMovies() {
   return text.data;
 }
 
+async function getScreenings() {
+  const res = await fetch(MOVIE_API + '/screenings');
+  const text = await res.json();
+  return text.data;
+}
+
 const richardsAPI = {
-  getMovies
+  getMovies,
+  getScreenings
 }
 
 export default richardsAPI;
