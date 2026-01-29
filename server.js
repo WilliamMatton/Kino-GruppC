@@ -13,7 +13,12 @@ server.get('/screenings', async(req, res) => {
 	res.status(200).json(screenings);
 });
 
-/* server.use('/static', express.static('./static')); */
+server.get('/movies/:id', async(req, res) => {
+	console.log(req.params.id);
+	const movie = await richardsAPI.getMovie(req.params.id);
+	res.status(200).json(movie);
+});
+
 server.use(express.static('static'));
 
 server.listen(5080);
