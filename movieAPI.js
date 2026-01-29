@@ -1,5 +1,3 @@
-import { json } from "express";
-
 const MOVIE_API = 'https://plankton-app-xhkom.ondigitalocean.app/api';
 
 async function getMovies() {

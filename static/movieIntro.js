@@ -3,12 +3,10 @@ const id = params.get('id');
 
 async function loadMovie() {
   const response = await fetch(
-    `https://plankton-app-xhkom.ondigitalocean.app/api/movies/${id}`
+    `http://localhost:5080/movies/` + id
   );
-
-  const json = await response.json();
-  const movie = json.data;
-
+  const movie = await response.json();
+  
   document.querySelector('.movieTitle').textContent =
     movie.attributes.title;
 
