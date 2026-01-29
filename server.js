@@ -8,6 +8,11 @@ server.get('/movies', async(req, res) => {
 	res.send(movies);
 });
 
-server.use('/static', express.static('./static'));
+/*server.get('/movies/:id', async(req, res) => {
+	const movie = await richardsAPI.getMovie(req.params.id);
+	res.send(movie);
+});*/
+
+server.use(express.static('static'));
 
 server.listen(5080);
