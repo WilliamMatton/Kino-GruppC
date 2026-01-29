@@ -1,9 +1,13 @@
-const http = require('http')
-const fs = require('fs')
-const path = require('path')
+import express from 'express';
+import richardsAPI from './movieAPI.js';
 
-const port = Number(process.env.PORT) || 5080
+const server = express();
 
-server.listen(port, () => {
-	console.log(`Server running at http://localhost:${port}`)
-})
+server.get('/movies', async(req, res) => {
+	const movies = await richardsAPI.getMovies();
+	res.send(movies);
+});
+
+server.use('/static', express.static('./static'));
+
+server.listen(5080);
