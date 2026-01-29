@@ -6,8 +6,15 @@ async function getMovies() {
   return text.data;
 }
 
+async function getMovie(id) {
+  const res = await fetch(MOVIE_API + '/movies/' + id);
+  const json = await res.json();
+  return json.data;
+}
+
 const richardsAPI = {
-  getMovies
+  getMovies,
+  getMovie
 }
 
 export default richardsAPI;

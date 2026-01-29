@@ -5,9 +5,15 @@ const server = express();
 
 server.get('/movies', async(req, res) => {
 	const movies = await richardsAPI.getMovies();
-	res.send(movies);
+	res.status(200).json(movies);
 });
 
-server.use('/static', express.static('./static'));
+server.get('/movies/:id', async(req, res) => {
+	console.log(req.params.id);
+	const movie = await richardsAPI.getMovie(req.params.id);
+	res.status(200).json(movie);
+});
+
+server.use(express.static('static'));
 
 server.listen(5080);
