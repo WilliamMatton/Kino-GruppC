@@ -19,7 +19,9 @@ async function getScreenings() {
 }
 
 const richardsAPI = {
-  getMovies
+  getMovies,
+  getMovie,
+  getScreenings
 }
 
 export default richardsAPI;
