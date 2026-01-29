@@ -28,6 +28,11 @@ fetch('https://plankton-app-xhkom.ondigitalocean.app/api/movies')
 
       const card = document.createElement('div');
       card.classList.add('card');
+
+      card.addEventListener('click', () => {
+        window.location.href = `/movieIntro.html?id=${movie.id}`;
+      });
+      card.style.cursor = 'pointer';
       card.dataset.id = movie.id;
       card.dataset.name = title;
       card.dataset.img = imageUrl;

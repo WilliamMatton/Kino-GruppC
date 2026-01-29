@@ -1,0 +1,21 @@
+.movie-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+.movieImg {
+    width: 100%;        
+    max-width: 400px;
+    height: auto; 
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+.movieIntro {
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+.movieTitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
