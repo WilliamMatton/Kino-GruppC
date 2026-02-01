@@ -18,7 +18,16 @@ async function getReviews() {
   const res = await fetch(REVIEWS_API + '/reviews');
   const text = await res.json();
   return text.data;
-  
+}
+
+async function getReviewsForMovie(movieId) {
+  const res = await fetch(
+    `${REVIEWS_API}?filters[movie]=${movieId}`
+  );
+  const json = await res.json();
+
+  console.log('RAW API RESPONSE:', json);
+  return json.data ?? [];
 }
 
 async function getReviewrating(rating){
@@ -45,6 +54,25 @@ const richardsAPI = {
   getReviewrating,
   getReviews,
   getUpcomingScreeningsForMovie,
+  getReviewsForMovie,
 }
 
 export default richardsAPI;
+
+//////////////logic for our API//////////////////
+//behöver den id också? Ska inte getReviews ha med movieId? Eller ska denna funktion ha det?
+export async function averageMovieGrade(movieId) {
+  const reviews = await getReviewsForMovie(movieId);
+
+  if (reviews.length === 0) {
+    return null;
+  }
+  console.log('REVIEWS:', reviews);
+  const sum = reviews.reduce(
+    (total, r) => total + r.attributes.rating,
+    0
+  );
+
+  console.log('SUM:', sum);
+  return sum / reviews.length;
+}
