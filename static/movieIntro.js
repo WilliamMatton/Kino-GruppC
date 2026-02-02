@@ -1,6 +1,14 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
+const reviewList = document.querySelector('.movieReviewList');
+const previousReviewPageBtn = document.querySelector('.previousReviewPageBtn');
+const nextReviewPageBtn = document.querySelector('.nextReviewPageBtn');
+
+let reviews = null;
+let totalReviewPages = 0;
+let currentReviewPage = 0;
+
 async function loadMovie() {
   const response = await fetch(
     `http://localhost:5080/movies/` + id
@@ -18,8 +26,15 @@ async function loadMovie() {
   img.alt = movie.attributes.title;
 }
 
-function createReview() {
-  const reviewList = document.querySelector('.movieReviewList');
+previousReviewPageBtn.addEventListener('click', () => {
+  renderPreviousReviewPage();
+});
+
+nextReviewPageBtn.addEventListener('click', () => {
+  renderNextReviewPage();
+});
+
+function createReview(reviewData) {
   const reviewListItem = document.createElement('li');
   const reviewRating = document.createElement('small');
   const review = document.createElement('div');
@@ -32,9 +47,9 @@ function createReview() {
   reviewComment.classList.add('movieReviewComment');
   reviewAuthor.classList.add('movieReviewAuthor');
 
-  reviewRating.innerText = "4 av 5";
-  reviewComment.innerText = "Detta är en recension på en film.";
-  reviewAuthor.innerText = "John Doe";
+  reviewRating.innerText = reviewData.attributes.rating + " av 5";
+  reviewComment.innerText = reviewData.attributes.comment;
+  reviewAuthor.innerText = reviewData.attributes.author;
 
   review.append(reviewComment);
   review.append(reviewAuthor);
@@ -43,5 +58,35 @@ function createReview() {
   reviewList.append(reviewListItem);
 }
 
+async function loadMovieReviews() {
+  const response = await fetch('http://localhost:5080/reviews/' + id);
+  reviews = await response.json();
+  if(reviews.length === 0) return;
+  totalReviewPages = Math.ceil(reviews.length / 5);
+  renderMovieReviews();
+}
+
+function renderMovieReviews() {
+  reviewList.innerHTML = '';
+
+  const reviewsToRender = reviews.slice(currentReviewPage * 5);
+
+  for(let i = 0; i < (reviewsToRender.length > 5 ? 5 : reviewsToRender.length); i++) {
+    createReview(reviewsToRender[i]);
+  }
+}
+
+function renderNextReviewPage() {
+  if(currentReviewPage + 1 === totalReviewPages) return;
+  currentReviewPage++;
+  renderMovieReviews();
+}
+
+function renderPreviousReviewPage() {
+  if(currentReviewPage === 0) return;
+  currentReviewPage--;
+  renderMovieReviews();
+}
+
 loadMovie();
-createReview();
+loadMovieReviews();
