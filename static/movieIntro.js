@@ -34,6 +34,7 @@ nextReviewPageBtn.addEventListener('click', () => {
 });
 
 function createReview(reviewData) {
+  const reviewInfo = reviewData.attributes ? reviewData.attributes : reviewData;
   const reviewListItem = document.createElement('li');
   const reviewRating = document.createElement('small');
   const review = document.createElement('div');
@@ -46,15 +47,58 @@ function createReview(reviewData) {
   reviewComment.classList.add('movieReviewComment');
   reviewAuthor.classList.add('movieReviewAuthor');
 
-  reviewRating.innerText = reviewData.attributes.rating + " av 5";
-  reviewComment.innerText = reviewData.attributes.comment;
-  reviewAuthor.innerText = reviewData.attributes.author;
+  reviewRating.innerText = reviewInfo.rating + " av 5";
+  reviewComment.innerText = reviewInfo.comment;
+  reviewAuthor.innerText = reviewInfo.author;
 
   review.append(reviewComment);
   review.append(reviewAuthor);
   reviewListItem.append(reviewRating);
   reviewListItem.append(review);
   reviewList.append(reviewListItem);
+}
+
+
+async function submitReview(event) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const status = form.querySelector('.reviewStatus');
+  const author = form.querySelector('.reviewName').value.trim();
+  const rating = Number(form.querySelector('.reviewRatingInput').value);
+  const comment = form.querySelector('.reviewCommentInput').value.trim();
+
+  if (!author || !comment || !rating) {
+    status.textContent = 'Fyll i alla fält.';
+    return;
+  }
+
+  status.textContent = 'Skickar...';
+
+  try {
+    const response = await fetch('/reviews', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        author,
+        rating,
+        comment,
+        movie: id,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Något gick fel');
+    }
+
+    createReview({ author, rating, comment });
+    form.reset();
+    status.textContent = 'Tack för din recension!';
+  } catch (error) {
+    status.textContent = 'Kunde inte skicka recension. Försök igen.';
+  }
 }
 
 async function loadMovieReviews() {
@@ -89,3 +133,6 @@ function renderPreviousReviewPage() {
 
 loadMovie();
 renderMovieReviews();
+
+const reviewForm = document.querySelector('.movieReviewForm');
+reviewForm.addEventListener('submit', submitReview);
