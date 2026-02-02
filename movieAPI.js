@@ -27,6 +27,12 @@ async function getReviewrating(rating){
   return json.data;
 }
 
+async function getReviewsForMovie(movieID) {
+  const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID);
+  const json = await res.json();
+  return json.data;
+}
+
 async function getUpcomingScreeningsForMovie(movieId) {
   const now = new Date().toISOString();
 
@@ -44,6 +50,7 @@ const richardsAPI = {
   getMovie,
   getReviewrating,
   getReviews,
+  getReviewsForMovie,
   getUpcomingScreeningsForMovie,
 }
 

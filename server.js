@@ -9,9 +9,13 @@ server.get('/movies', async(req, res) => {
 });
 
 server.get('/movies/:id', async(req, res) => {
-	console.log(req.params.id);
 	const movie = await richardsAPI.getMovie(req.params.id);
 	res.status(200).json(movie);
+});
+
+server.get('/reviews/:id', async (req, res) => {
+	const reviews = await richardsAPI.getReviewsForMovie(req.params.id);
+	res.status(200).json(reviews);
 });
 
 server.use(express.static('static'));
