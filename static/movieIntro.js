@@ -82,7 +82,7 @@ function renderNextReviewPage() {
 }
 
 function renderPreviousReviewPage() {
-  if(currentReviewPage === 0) return;
+  if(currentReviewPage === 1) return;
   currentReviewPage--;
   renderMovieReviews();
 }
