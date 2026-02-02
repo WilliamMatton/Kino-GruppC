@@ -88,4 +88,4 @@ function renderPreviousReviewPage() {
 }
 
 loadMovie();
-renderMovieReviews(1);
+renderMovieReviews();
