@@ -20,7 +20,7 @@ async function getReviews() {
   return text.data;
 }
 
-async function getReviewsForMovie(movieId) {
+async function loadReviewsForMovie(movieId) {
   const res = await fetch(
     `${REVIEWS_API}?filters[movie]=${movieId}`
   );
@@ -30,6 +30,7 @@ async function getReviewsForMovie(movieId) {
   return json.data ?? [];
 }
 
+
 async function getReviewrating(rating){
   const res = await fetch(REVIEWS_API + '/reviews/' + rating);
   const json = await res.json();
@@ -38,15 +39,21 @@ async function getReviewrating(rating){
 
 async function getUpcomingScreeningsForMovie(movieId) {
   const now = new Date().toISOString();
-
+  
   const url =
-    MOVIE_API +
-    `/screenings?filters[movie]=${movieId}&filters[start_time][$gte]=${encodeURIComponent(now)}&sort=start_time:asc`;
-
+  MOVIE_API +
+  `/screenings?filters[movie]=${movieId}&filters[start_time][$gte]=${encodeURIComponent(now)}&sort=start_time:asc`;
+  
   const res = await fetch(url);
   const json = await res.json();
   return json.data;
 }
+
+const cmsAdapter = {
+  loadReviewsForMovie,
+};
+
+export {cmsAdapter};
 
 const richardsAPI = {
   getMovies,
@@ -54,15 +61,14 @@ const richardsAPI = {
   getReviewrating,
   getReviews,
   getUpcomingScreeningsForMovie,
-  getReviewsForMovie,
+  loadReviewsForMovie,
 }
 
 export default richardsAPI;
 
-//////////////logic for our API//////////////////
-//behöver den id också? Ska inte getReviews ha med movieId? Eller ska denna funktion ha det?
-export async function averageMovieGrade(movieId) {
-  const reviews = await getReviewsForMovie(movieId);
+///////////////logic for our API//////////////////
+export async function averageMovieGrade(cmsAdapter,movieId) {
+  const reviews = await cmsAdapter.loadReviewsForMovie(movieId);
 
   if (reviews.length === 0) {
     return null;
@@ -76,3 +82,4 @@ export async function averageMovieGrade(movieId) {
   console.log('SUM:', sum);
   return sum / reviews.length;
 }
+
