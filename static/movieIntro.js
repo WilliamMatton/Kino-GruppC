@@ -57,15 +57,15 @@ function createReview(reviewData) {
   reviewList.append(reviewListItem);
 }
 
-async function loadMovieReviews(pageNumber) {
-  const response = await fetch('http://localhost:5080/reviews/' + id + "?page=" + pageNumber);
+async function loadMovieReviews() {
+  const response = await fetch('http://localhost:5080/reviews/' + id + "?page=" + currentReviewPage);
   const reviews = await response.json();
   totalReviewPages = reviews.meta.pagination.pageCount;
   return reviews.data;
 }
 
 async function renderMovieReviews() {
-  const reviews = await loadMovieReviews(currentReviewPage);
+  const reviews = await loadMovieReviews();
   if(reviews.length === 0) return;
   
   reviewList.innerHTML = '';
