@@ -14,7 +14,7 @@ server.get('/movies/:id', async(req, res) => {
 });
 
 server.get('/reviews/:id', async (req, res) => {
-	const reviews = await richardsAPI.getReviewsForMovie(req.params.id);
+	const reviews = await richardsAPI.getReviewsForMovie(req.params.id, req.query.page?? 1);
 	res.status(200).json(reviews);
 });
 

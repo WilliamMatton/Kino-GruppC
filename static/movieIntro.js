@@ -5,9 +5,8 @@ const reviewList = document.querySelector('.movieReviewList');
 const previousReviewPageBtn = document.querySelector('.previousReviewPageBtn');
 const nextReviewPageBtn = document.querySelector('.nextReviewPageBtn');
 
-let reviews = null;
 let totalReviewPages = 0;
-let currentReviewPage = 0;
+let currentReviewPage = 1;
 
 async function loadMovie() {
   const response = await fetch(
@@ -58,26 +57,26 @@ function createReview(reviewData) {
   reviewList.append(reviewListItem);
 }
 
-async function loadMovieReviews() {
-  const response = await fetch('http://localhost:5080/reviews/' + id);
-  reviews = await response.json();
-  if(reviews.length === 0) return;
-  totalReviewPages = Math.ceil(reviews.length / 5);
-  renderMovieReviews();
+async function loadMovieReviews(pageNumber) {
+  const response = await fetch('http://localhost:5080/reviews/' + id + "?page=" + pageNumber);
+  const reviews = await response.json();
+  totalReviewPages = reviews.meta.pagination.pageCount;
+  return reviews.data;
 }
 
-function renderMovieReviews() {
+async function renderMovieReviews() {
+  const reviews = await loadMovieReviews(currentReviewPage);
+  if(reviews.length === 0) return;
+  
   reviewList.innerHTML = '';
 
-  const reviewsToRender = reviews.slice(currentReviewPage * 5);
-
-  for(let i = 0; i < (reviewsToRender.length > 5 ? 5 : reviewsToRender.length); i++) {
-    createReview(reviewsToRender[i]);
+  for(let i = 0; i < reviews.length; i++) {
+    createReview(reviews[i]);
   }
 }
 
 function renderNextReviewPage() {
-  if(currentReviewPage + 1 === totalReviewPages) return;
+  if(currentReviewPage === totalReviewPages) return;
   currentReviewPage++;
   renderMovieReviews();
 }
@@ -89,4 +88,4 @@ function renderPreviousReviewPage() {
 }
 
 loadMovie();
-loadMovieReviews();
+renderMovieReviews(1);

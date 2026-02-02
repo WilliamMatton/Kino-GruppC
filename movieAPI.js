@@ -27,10 +27,11 @@ async function getReviewrating(rating){
   return json.data;
 }
 
-async function getReviewsForMovie(movieID) {
-  const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID);
+async function getReviewsForMovie(movieID, page) {
+  const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID
+    + '&pagination[pageSize]=5&pagination[page]=' + page);
   const json = await res.json();
-  return json.data;
+  return json;
 }
 
 async function getUpcomingScreeningsForMovie(movieId) {
