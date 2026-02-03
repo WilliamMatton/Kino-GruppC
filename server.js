@@ -3,6 +3,8 @@ import richardsAPI from './movieAPI.js';
 
 const server = express();
 
+server.use(express.json());
+
 server.get('/movies', async(req, res) => {
 	const movies = await richardsAPI.getMovies();
 	res.status(200).json(movies);
@@ -23,6 +25,13 @@ server.get('/screenings', async(req, res) => {
   const movieId = req.query.movieId;
   const screenings = await richardsAPI.getUpcomingScreeningsForMovie(movieId);
   res.status(200).json({ data: screenings });
+server.post('/reviews', async (req, res) => {
+	try {
+		const review = await richardsAPI.createReview(req.body);
+		res.status(201).json(review);
+	} catch (error) {
+		res.status(500).json({ error: 'Could not create review' });
+	}
 });
 
 server.use(express.static('static'));
