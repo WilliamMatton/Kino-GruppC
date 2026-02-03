@@ -1,6 +1,13 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
+const reviewList = document.querySelector('.movieReviewList');
+const previousReviewPageBtn = document.querySelector('.previousReviewPageBtn');
+const nextReviewPageBtn = document.querySelector('.nextReviewPageBtn');
+
+let totalReviewPages = 0;
+let currentReviewPage = 1;
+
 async function loadMovie() {
   const response = await fetch(
     `http://localhost:5080/movies/` + id
@@ -18,4 +25,114 @@ async function loadMovie() {
   img.alt = movie.attributes.title;
 }
 
+previousReviewPageBtn.addEventListener('click', () => {
+  renderPreviousReviewPage();
+});
+
+nextReviewPageBtn.addEventListener('click', () => {
+  renderNextReviewPage();
+});
+
+function createReview(reviewData) {
+  const reviewInfo = reviewData.attributes ? reviewData.attributes : reviewData;
+  const reviewListItem = document.createElement('li');
+  const reviewRating = document.createElement('small');
+  const review = document.createElement('div');
+  const reviewComment = document.createElement('p');
+  const reviewAuthor = document.createElement('small');
+
+  reviewListItem.classList.add('movieReviewListItem');
+  reviewRating.classList.add('movieReviewRating');
+  review.classList.add('movieReview');
+  reviewComment.classList.add('movieReviewComment');
+  reviewAuthor.classList.add('movieReviewAuthor');
+
+  reviewRating.innerText = reviewInfo.rating + " av 5";
+  reviewComment.innerText = reviewInfo.comment;
+  reviewAuthor.innerText = reviewInfo.author;
+
+  review.append(reviewComment);
+  review.append(reviewAuthor);
+  reviewListItem.append(reviewRating);
+  reviewListItem.append(review);
+  reviewList.append(reviewListItem);
+}
+
+
+async function submitReview(event) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const status = form.querySelector('.reviewStatus');
+  const author = form.querySelector('.reviewName').value.trim();
+  const rating = Number(form.querySelector('.reviewRatingInput').value);
+  const comment = form.querySelector('.reviewCommentInput').value.trim();
+
+  if (!author || !comment || !rating) {
+    status.textContent = 'Fyll i alla fält.';
+    return;
+  }
+
+  status.textContent = 'Skickar...';
+
+  try {
+    const response = await fetch('/reviews', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        author,
+        rating,
+        comment,
+        movie: id,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Något gick fel');
+    }
+
+    createReview({ author, rating, comment });
+    form.reset();
+    status.textContent = 'Tack för din recension!';
+  } catch (error) {
+    status.textContent = 'Kunde inte skicka recension. Försök igen.';
+  }
+}
+
+async function loadMovieReviews() {
+  const response = await fetch('http://localhost:5080/reviews/' + id + "?page=" + currentReviewPage);
+  const reviews = await response.json();
+  totalReviewPages = reviews.meta.pagination.pageCount;
+  return reviews.data;
+}
+
+async function renderMovieReviews() {
+  const reviews = await loadMovieReviews();
+  if(reviews.length === 0) return;
+  
+  reviewList.innerHTML = '';
+
+  for(let i = 0; i < reviews.length; i++) {
+    createReview(reviews[i]);
+  }
+}
+
+function renderNextReviewPage() {
+  if(currentReviewPage === totalReviewPages) return;
+  currentReviewPage++;
+  renderMovieReviews();
+}
+
+function renderPreviousReviewPage() {
+  if(currentReviewPage === 1) return;
+  currentReviewPage--;
+  renderMovieReviews();
+}
+
 loadMovie();
+renderMovieReviews();
+
+const reviewForm = document.querySelector('.movieReviewForm');
+reviewForm.addEventListener('submit', submitReview);

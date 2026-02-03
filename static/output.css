@@ -1260,3 +1260,104 @@ tr.memberTableRows {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+
+.movieReviews {
+  align-self: center;
+  background-color: #3a3a3a;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  max-width: 1000px;
+  padding: 1rem;
+  width: 80%;
+}
+
+.movieReviewsHeading {
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+.movieReviewList {
+  list-style: none;
+}
+
+.movieReviewListItem {
+  background-color: #2b2b2b;
+  border: 0.1rem solid #797979;
+  border-radius: 0.3rem;
+  margin: 1rem 0;
+  text-align: end;
+}
+
+.movieReviewRating {
+  margin: 0 0.5rem 0 0;
+}
+
+.movieReview {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  text-align: start;
+}
+
+.movieReviewComment {
+  margin-bottom: 0.5rem;
+}
+
+.movieReviewButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.previousReviewPageBtn, .nextReviewPageBtn {
+  background: none;
+  border: none;
+  color: #a9a9fc;
+  cursor: pointer;
+}
+
+.movieReviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  text-align: start;
+}
+
+.movieReviewForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.movieReviewForm input,
+.movieReviewForm textarea {
+  background-color: #2b2b2b;
+  border: 0.1rem solid #797979;
+  border-radius: 0.3rem;
+  color: #ffffff;
+  padding: 0.6rem 0.8rem;
+}
+
+.movieReviewForm textarea {
+  resize: vertical;
+}
+
+.reviewSubmitBtn {
+  align-self: flex-start;
+  background-color: #a9a9fc;
+  border: none;
+  border-radius: 0.3rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+.reviewStatus {
+  color: #a9a9fc;
+  min-height: 1.2rem;
+}
