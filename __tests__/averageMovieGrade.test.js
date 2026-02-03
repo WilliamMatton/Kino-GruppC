@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { averageMovieGrade } from '../movieAPI.js';
+import { averageMovieGrade } from '/movieAPI.js';
 
 describe('averageMovieGrade()', () => {
   it('returns average rating when reviews exist', async () => {

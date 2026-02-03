@@ -18,6 +18,21 @@ async function loadMovie() {
   img.alt = movie.attributes.title;
 }
 
+async function showAverageRating() {
+  const res = await fetch(
+    `http://localhost:5080/movies/${id}/average-rating`
+  );
+  const data = await res.json();
+
+  const ratingEl = document.querySelector('.movieAverageRating');
+
+  if (data.average === null) {
+    ratingEl.textContent = 'Inga recensioner än';
+  } else {
+    ratingEl.textContent = `${data.average.toFixed(1)} / 5`;
+  }
+}
+
 function createReview() {
   const reviewList = document.querySelector('.movieReviewList');
   const reviewListItem = document.createElement('li');
@@ -32,7 +47,7 @@ function createReview() {
   reviewComment.classList.add('movieReviewComment');
   reviewAuthor.classList.add('movieReviewAuthor');
 
-  reviewRating.innerText = "4 av 5";
+  reviewRating.innerText = "";
   reviewComment.innerText = "Detta är en recension på en film.";
   reviewAuthor.innerText = "John Doe";
 
@@ -43,5 +58,6 @@ function createReview() {
   reviewList.append(reviewListItem);
 }
 
+showAverageRating();
 loadMovie();
 createReview();

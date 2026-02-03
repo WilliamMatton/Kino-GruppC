@@ -26,10 +26,8 @@ async function loadReviewsForMovie(movieId) {
   );
   const json = await res.json();
 
-  console.log('RAW API RESPONSE:', json);
   return json.data ?? [];
 }
-
 
 async function getReviewrating(rating){
   const res = await fetch(REVIEWS_API + '/reviews/' + rating);
@@ -55,6 +53,21 @@ const cmsAdapter = {
 
 export {cmsAdapter};
 
+export async function averageMovieGrade(cmsAdapter, movieId) {
+  const reviews = await cmsAdapter.loadReviewsForMovie(movieId);
+  
+  if (!reviews || reviews.length === 0) {
+    return null;
+  }
+  
+  const sum = reviews.reduce(
+    (total, r) => total + r.attributes.rating,
+    0
+  );
+  
+  return sum / reviews.length;
+}
+
 const richardsAPI = {
   getMovies,
   getMovie,
@@ -65,21 +78,3 @@ const richardsAPI = {
 }
 
 export default richardsAPI;
-
-///////////////logic for our API//////////////////
-export async function averageMovieGrade(cmsAdapter,movieId) {
-  const reviews = await cmsAdapter.loadReviewsForMovie(movieId);
-
-  if (reviews.length === 0) {
-    return null;
-  }
-  console.log('REVIEWS:', reviews);
-  const sum = reviews.reduce(
-    (total, r) => total + r.attributes.rating,
-    0
-  );
-
-  console.log('SUM:', sum);
-  return sum / reviews.length;
-}
-
