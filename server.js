@@ -18,6 +18,13 @@ server.get('/reviews/:id', async (req, res) => {
 	res.status(200).json(reviews);
 });
 
+// kommande visningar för en film
+server.get('/screenings', async(req, res) => {
+  const movieId = req.query.movieId;
+  const screenings = await richardsAPI.getUpcomingScreeningsForMovie(movieId);
+  res.status(200).json({ data: screenings });
+});
+
 server.use(express.static('static'));
 
 server.listen(5080);
