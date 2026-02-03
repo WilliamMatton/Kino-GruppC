@@ -30,6 +30,9 @@ server.get('/screenings', async(req, res) => {
 
   const screenings = await richardsAPI.getUpcomingScreeningsForMovie(movieId);
   res.status(200).json({ data: screenings });
+
+});
+
 server.post('/reviews', async (req, res) => {
 	try {
 		const review = await richardsAPI.createReview(req.body);
