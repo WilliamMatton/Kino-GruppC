@@ -56,7 +56,7 @@ export {cmsAdapter};
 export async function averageMovieGrade(cmsAdapter, movieId) {
   const reviews = await cmsAdapter.loadReviewsForMovie(movieId);
   
-  if (!reviews || reviews.length === 0) {
+  if (!reviews || reviews.length < 5) {
     return null;
   }
   

@@ -27,9 +27,9 @@ async function showAverageRating() {
   const ratingEl = document.querySelector('.movieAverageRating');
 
   if (data.average === null) {
-    ratingEl.textContent = 'Inga recensioner än';
+    ratingEl.textContent = '';
   } else {
-    ratingEl.textContent = `${data.average.toFixed(1)} / 5`;
+    ratingEl.textContent = `${data.average.toFixed(1)} / 5 Rating`;
   }
 }
 
