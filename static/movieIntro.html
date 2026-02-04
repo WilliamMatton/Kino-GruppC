@@ -49,6 +49,14 @@
                 <p class="movieAverageRating"></p>
                 <p class="movieAverageRatingIMDB"></p>
                 <p class="movieIntro"></p>
+
+                <div class="movieDateAndTimeSection">
+                    <div class="movieDateAndTimeWrap">
+                        <p>Kommande visningar:</p>
+                        <p class="movieDateAndTime"></p>
+                    </div>
+                </div>
+
                 <a href="filmcard.html">← Tillbaka till filmer</a>
 
             </article>
@@ -56,6 +64,22 @@
 
         <section class="movieReviews">
             <h1 class="movieReviewsHeading">Recensioner</h1>
+            <form class="movieReviewForm movieReviewListItem">
+                <label>
+                    Namn
+                    <input type="text" class="reviewName" required>
+                </label>
+                <label>
+                    Betyg (1-5)
+                    <input type="number" class="reviewRatingInput" min="1" max="5" required>
+                </label>
+                <label>
+                    Kommentar
+                    <textarea class="reviewCommentInput" rows="4" required></textarea>
+                </label>
+                <button type="submit" class="reviewSubmitBtn">Skicka recension</button>
+                <p class="reviewStatus" aria-live="polite"></p>
+            </form>
             <ul class="movieReviewList">
                 
             </ul>

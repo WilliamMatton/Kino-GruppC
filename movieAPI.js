@@ -35,13 +35,36 @@ async function getReviewrating(rating){
   return json.data;
 }
 
+async function getReviewsForMovie(movieID, page) {
+  const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID
+    + '&pagination[pageSize]=5&pagination[page]=' + page);
+  const json = await res.json();
+  return json;
+}
+
+async function createReview(review) {
+  const res = await fetch(MOVIE_API + '/reviews', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      data: {
+        author: review.author,
+        rating: review.rating,
+        comment: review.comment,
+        movie: review.movie,
+      },
+    }),
+  });
+
+  const json = await res.json();
+  return json;
+}
+
 async function getUpcomingScreeningsForMovie(movieId) {
   const now = new Date().toISOString();
-  
-  const url =
-  MOVIE_API +
-  `/screenings?filters[movie]=${movieId}&filters[start_time][$gte]=${encodeURIComponent(now)}&sort=start_time:asc`;
-  
+  const url = MOVIE_API + `/screenings?filters[movie]=${movieId}` + `&filters[start_time][$gte]=${encodeURIComponent(now)}` + `&sort=start_time:asc`;
   const res = await fetch(url);
   const json = await res.json();
   return json.data;
@@ -73,6 +96,8 @@ const richardsAPI = {
   getMovie,
   getReviewrating,
   getReviews,
+  getReviewsForMovie,
+  createReview,
   getUpcomingScreeningsForMovie,
   loadReviewsForMovie,
 }
