@@ -18,6 +18,11 @@ server.get('/reviews/:id', async (req, res) => {
 	res.status(200).json(reviews);
 });
 
+server.get('/movies/:id/rating', async (req, res) => {
+  const rating = await richardsAPI.getMovieRating(req.params.id);
+  res.status(200).json(rating);
+});
+
 server.use(express.static('static'));
 
 server.listen(5080);

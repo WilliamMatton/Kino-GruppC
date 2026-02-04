@@ -87,5 +87,18 @@ function renderPreviousReviewPage() {
   renderMovieReviews();
 }
 
+async function loadMovieRating() {
+  const res = await fetch(`/movies/${id}/rating`);
+  const rating = await res.json();
+
+  const ratingEl = document.createElement('p');
+  ratingEl.textContent =
+    `Betyg: ${rating.rating} (${rating.source})`;
+
+  document.querySelector('.movie-intro')
+    .appendChild(ratingEl);
+}
+
 loadMovie();
 renderMovieReviews();
+loadMovieRating();
