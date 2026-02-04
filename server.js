@@ -20,6 +20,19 @@ server.get('/reviews/:id', async (req, res) => {
 	res.status(200).json(reviews);
 });
 
+// kommande visningar för en film
+server.get('/screenings', async(req, res) => {
+  const movieId = req.query.movieId;
+
+  if (!movieId) {
+    return res.status(400).json({ error: "Bad Request, for movieId" });
+  }
+
+  const screenings = await richardsAPI.getUpcomingScreeningsForMovie(movieId);
+  res.status(200).json({ data: screenings });
+
+});
+
 server.post('/reviews', async (req, res) => {
 	try {
 		const review = await richardsAPI.createReview(req.body);
