@@ -4,13 +4,35 @@ async function fetchJson(url){
 	return res.json()
 }
 
-async function getRatingsFirstPage(id){
-	const json=await fetchJson(`/reviews/${id}?page=1`)
-	const data=Array.isArray(json?.data)?json.data:[]
+function daysAgoDate(days){
+	const d=new Date()
+	d.setDate(d.getDate()-days)
+	return d
+}
+
+async function getRecentRatings(id,days){
+	const cutoff=daysAgoDate(days)
 	const ratings=[]
-	for(const r of data){
-		const val=r?.attributes?.rating
-		if(typeof val==='number') ratings.push(val)
+	let page=1
+	while(true){
+		const json=await fetchJson(`/reviews/${id}?page=${page}`)
+		const data=Array.isArray(json?.data)?json.data:[]
+		if(data.length===0) break
+		let olderCount=0
+		for(const r of data){
+			const val=r?.attributes?.rating
+			const created=r?.attributes?.createdAt||r?.attributes?.updatedAt
+			const when=created?new Date(created):null
+			if(when && when>=cutoff){
+				if(typeof val==='number') ratings.push(val)
+			} else {
+				olderCount++
+			}
+		}
+		const meta=json?.meta?.pagination
+		if(!meta||page>=meta.pageCount) break
+		if(olderCount===data.length) break
+		page++
 	}
 	return ratings
 }
@@ -100,17 +122,18 @@ function loadCache(key){
 }
 
 async function loadPopular(){
-	const cached=loadCache('popularTop')
+	const cached=loadCache('popularTop30')
 	if(cached&&Array.isArray(cached)) {renderTop(cached.slice(0,5)); return}
 	const movies=await fetchJson('/movies')
 	const list=Array.isArray(movies)?movies:[]
 	const withRatings=await limitConcurrency(list,4,async m=>{
-		const ratings=await getRatingsFirstPage(m.id)
-		return {movie:m,avg:average(ratings)}
+		const ratings=await getRecentRatings(m.id,30)
+		return {movie:m,avg:average(ratings),count:ratings.length}
 	})
-	withRatings.sort((a,b)=>b.avg-a.avg)
-	const top=withRatings.slice(0,5)
-	saveCache('popularTop',top,10*60*1000)
+	const filtered=withRatings.filter(x=>x.count>0)
+	filtered.sort((a,b)=>b.avg-a.avg)
+	const top=filtered.slice(0,5)
+	saveCache('popularTop30',top,10*60*1000)
 	renderTop(top)
 }
 

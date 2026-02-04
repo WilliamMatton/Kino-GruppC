@@ -29,6 +29,7 @@ async function getReviewrating(rating){
 
 async function getReviewsForMovie(movieID, page) {
   const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID
+    + '&sort=createdAt:desc'
     + '&pagination[pageSize]=5&pagination[page]=' + page);
   const json = await res.json();
   return json;
