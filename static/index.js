@@ -31,7 +31,7 @@ function renderTop(top){
         const item=top[i]
 		if(!item) { el.innerHTML=''; continue }
 		
-        const attrs=item.movie?.attributes||{}
+        const attrs = item.movie?.attributes||{}
 		const imageUrl=attrs.image?.url||''
 		
         const title=attrs.title||''
@@ -41,20 +41,20 @@ function renderTop(top){
 		link.href =`/movieIntro.html?id=${item.movie.id}`
 		link.className ='movieLink'
 
-		const img =document.createElement('img')
+		const img = document.createElement('img')
 		img.src =imageUrl
 		img.alt =title
 		img.loading='lazy'
 		img.className ='imageCard'
 
-		const info =document.createElement('div')
+		const info = document.createElement('div')
 		info.className='container'
 
-		const h3=document.createElement('h3')
+		const h3= document.createElement('h3')
 		h3.className='cardTitle'
 		h3.textContent=title
 
-		const p=document.createElement('p')
+		const p= document.createElement('p')
 		p.className='cardRating'
 		p.textContent=`${item.avg.toFixed(1)} / 5`
 		info.appendChild(h3)
