@@ -18,7 +18,15 @@ async function getReviews() {
   const res = await fetch(REVIEWS_API + '/reviews');
   const text = await res.json();
   return text.data;
-  
+}
+
+async function loadReviewsForMovie(movieId) {
+  const res = await fetch(
+    `${REVIEWS_API}?filters[movie]=${movieId}`
+  );
+  const json = await res.json();
+
+  return json.data ?? [];
 }
 
 async function getReviewrating(rating){
@@ -62,6 +70,27 @@ async function getUpcomingScreeningsForMovie(movieId) {
   return json.data;
 }
 
+const cmsAdapter = {
+  loadReviewsForMovie,
+};
+
+export {cmsAdapter};
+
+export async function averageMovieGrade(cmsAdapter, movieId) {
+  const reviews = await cmsAdapter.loadReviewsForMovie(movieId);
+  
+  if (!reviews || reviews.length < 5) {
+    return null;
+  }
+  
+  const sum = reviews.reduce(
+    (total, r) => total + r.attributes.rating,
+    0
+  );
+  
+  return sum / reviews.length;
+}
+
 const richardsAPI = {
   getMovies,
   getMovie,
@@ -70,6 +99,7 @@ const richardsAPI = {
   getReviewsForMovie,
   createReview,
   getUpcomingScreeningsForMovie,
+  loadReviewsForMovie,
 }
 
 export default richardsAPI;

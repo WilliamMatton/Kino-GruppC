@@ -55,6 +55,21 @@ async function loadMovie() {
   });
 }
 
+async function showAverageRating() {
+  const res = await fetch(
+    `http://localhost:5080/movies/${id}/average-rating`
+  );
+  const data = await res.json();
+
+  const ratingEl = document.querySelector('.movieAverageRating');
+
+  if (data.average === null) {
+    ratingEl.textContent = '';
+  } else {
+    ratingEl.textContent = `${data.average.toFixed(1)} / 5 Rating`;
+  }
+}
+
 previousReviewPageBtn.addEventListener('click', () => {
   renderPreviousReviewPage();
 });
@@ -64,7 +79,6 @@ nextReviewPageBtn.addEventListener('click', () => {
 });
 
 function createReview(reviewData) {
-  const reviewInfo = reviewData.attributes ? reviewData.attributes : reviewData;
   const reviewListItem = document.createElement('li');
   const reviewRating = document.createElement('small');
   const review = document.createElement('div');
@@ -77,9 +91,9 @@ function createReview(reviewData) {
   reviewComment.classList.add('movieReviewComment');
   reviewAuthor.classList.add('movieReviewAuthor');
 
-  reviewRating.innerText = reviewInfo.rating + " av 5";
-  reviewComment.innerText = reviewInfo.comment;
-  reviewAuthor.innerText = reviewInfo.author;
+  reviewRating.innerText = reviewData.attributes.rating + " av 5";
+  reviewComment.innerText = reviewData.attributes.comment;
+  reviewAuthor.innerText = reviewData.attributes.author;
 
   review.append(reviewComment);
   review.append(reviewAuthor);
@@ -163,6 +177,7 @@ function renderPreviousReviewPage() {
 
 loadMovie();
 renderMovieReviews();
+showAverageRating();
 
 const reviewForm = document.querySelector('.movieReviewForm');
 reviewForm.addEventListener('submit', submitReview);
