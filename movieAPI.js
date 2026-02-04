@@ -56,11 +56,7 @@ async function createReview(review) {
 
 async function getUpcomingScreeningsForMovie(movieId) {
   const now = new Date().toISOString();
-
-  const url =
-    MOVIE_API +
-    `/screenings?filters[movie]=${movieId}&filters[start_time][$gte]=${encodeURIComponent(now)}&sort=start_time:asc`;
-
+  const url = MOVIE_API + `/screenings?filters[movie]=${movieId}` + `&filters[start_time][$gte]=${encodeURIComponent(now)}` + `&sort=start_time:asc`;
   const res = await fetch(url);
   const json = await res.json();
   return json.data;
