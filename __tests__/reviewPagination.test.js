@@ -1,26 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import request from 'supertest';
-import initializeApp from '../app.js';
-
-describe('Movie review pagination', () => {
-  const app = initializeApp(mockAPI);
-
-  test('Page 1 returns 5 reviews', async () => {
-    let response = await request(app)
-      .get('/reviews/1?page=1')
-      .expect('Content-Type', /json/)
-      .expect(200);
-    expect(response.body.data.length).toBe(5);
-  });
-
-  test('Page 2 returns 3 reviews', async () => {
-    let response = await request(app)
-      .get('/reviews/1?page=2')
-      .expect('Content-Type', /json/)
-      .expect(200);
-    expect(response.body.data.length).toBe(3);
-  });
-});
+import initializeServer from './reviewTestServer.js';
 
 const mockAPI = {
   getReviewsForMovie: async (id, page) => {
@@ -142,3 +122,23 @@ const mockAPI = {
     }
   }
 }
+
+describe('Movie review pagination', () => {
+  const server = initializeServer(mockAPI);
+
+  test('Page 1 returns 5 reviews', async () => {
+    let response = await request(server)
+      .get('/reviews/1?page=1')
+      .expect('Content-Type', /json/)
+      .expect(200);
+    expect(response.body.data.length).toBe(5);
+  });
+
+  test('Page 2 returns 3 reviews', async () => {
+    let response = await request(server)
+      .get('/reviews/1?page=2')
+      .expect('Content-Type', /json/)
+      .expect(200);
+    expect(response.body.data.length).toBe(3);
+  });
+});
