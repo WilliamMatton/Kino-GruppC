@@ -12,6 +12,7 @@
     margin-bottom: 1rem;
 }
 .movieIntro {
+  margin-top: 2rem;
   max-width: 600px;
   margin-bottom: 2rem;
 }
@@ -75,4 +76,64 @@
   border: none;
   color: #a9a9fc;
   cursor: pointer;
+}
+
+.movieReviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  text-align: start;
+}
+
+.movieReviewForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.movieReviewForm input,
+.movieReviewForm textarea {
+  background-color: #2b2b2b;
+  border: 0.1rem solid #797979;
+  border-radius: 0.3rem;
+  color: #ffffff;
+  padding: 0.6rem 0.8rem;
+}
+
+.movieReviewForm textarea {
+  resize: vertical;
+}
+
+.reviewSubmitBtn {
+  align-self: flex-start;
+  background-color: #a9a9fc;
+  border: none;
+  border-radius: 0.3rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+.reviewStatus {
+  color: #a9a9fc;
+  min-height: 1.2rem;
+}
+
+.movieDateAndTimeSection {
+  width: 100%;
+}
+
+.movieDateAndTimeWrap {
+  width: 12em;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.movieDateAndTime {
+  padding: .4em 0 .9em 0;
+  font-size: 1.1em;
+  color: silver;
 }
