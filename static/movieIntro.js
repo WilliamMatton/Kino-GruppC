@@ -8,6 +8,18 @@ const nextReviewPageBtn = document.querySelector('.nextReviewPageBtn');
 let totalReviewPages = 0;
 let currentReviewPage = 1;
 
+// konvertera tid, som exempelvis 19:00, och lokal tid
+function formatDateTime(isoString) {
+  const newDate = new Date(isoString);
+  const date = newDate.toLocaleDateString("sv-SE");
+  const time = newDate.toLocaleTimeString("sv-SE", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return `${date} ${time}`;
+}
+
 async function loadMovie() {
   const response = await fetch(
     `http://localhost:5080/movies/` + id
@@ -23,6 +35,24 @@ async function loadMovie() {
   const img = document.querySelector('.movieImg');
   img.src = movie.attributes.image.url;
   img.alt = movie.attributes.title;
+
+  // kommande visningar för denna film
+  const screeningsResponse = await fetch(`http://localhost:5080/screenings?movieId=${id}`,);
+  const screeningsData = await screeningsResponse.json();
+
+  // rendera start_time
+  const screeningsWrap = document.querySelector(".movieDateAndTime");
+
+  if (screeningsData.data.length === 0) {
+    screeningsWrap.textContent = "Inga kommande visningar";
+    return;
+  }
+
+  screeningsData.data.forEach((screening) => {
+    const p = document.createElement("p");
+    p.textContent = formatDateTime(screening.attributes.start_time);
+    screeningsWrap.appendChild(p);
+  });
 }
 
 previousReviewPageBtn.addEventListener('click', () => {
