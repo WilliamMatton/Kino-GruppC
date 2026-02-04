@@ -92,9 +92,9 @@ function createReview(reviewData) {
   reviewComment.classList.add('movieReviewComment');
   reviewAuthor.classList.add('movieReviewAuthor');
 
-  reviewRating.innerText = reviewData.attributes.rating + " av 5";
-  reviewComment.innerText = reviewData.attributes.comment;
-  reviewAuthor.innerText = reviewData.attributes.author;
+  reviewRating.innerText = reviewData.rating + " av 5";
+  reviewComment.innerText = reviewData.comment;
+  reviewAuthor.innerText = reviewData.author;
 
   review.append(reviewComment);
   review.append(reviewAuthor);
@@ -142,6 +142,7 @@ async function submitReview(event) {
     form.reset();
     status.textContent = 'Tack för din recension!';
   } catch (error) {
+    console.log(error);
     status.textContent = 'Kunde inte skicka recension. Försök igen.';
   }
 }
@@ -160,7 +161,7 @@ async function renderMovieReviews() {
   reviewList.innerHTML = '';
 
   for(let i = 0; i < reviews.length; i++) {
-    createReview(reviews[i]);
+    createReview(reviews[i].attributes);
   }
 }
 
