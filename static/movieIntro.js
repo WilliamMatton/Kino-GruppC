@@ -9,6 +9,18 @@ const nextReviewPageBtn = document.querySelector('.nextReviewPageBtn');
 let totalReviewPages = 0;
 let currentReviewPage = page;
 
+// konvertera tid, som exempelvis 19:00, och lokal tid
+function formatDateTime(isoString) {
+  const newDate = new Date(isoString);
+  const date = newDate.toLocaleDateString("sv-SE");
+  const time = newDate.toLocaleTimeString("sv-SE", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return `${date} ${time}`;
+}
+
 async function loadMovie() {
   const response = await fetch(
     `/movies/` + id
@@ -24,6 +36,39 @@ async function loadMovie() {
   const img = document.querySelector('.movieImg');
   img.src = movie.attributes.image.url;
   img.alt = movie.attributes.title;
+
+  // kommande visningar för denna film
+  const screeningsResponse = await fetch(`http://localhost:5080/screenings?movieId=${id}`,);
+  const screeningsData = await screeningsResponse.json();
+
+  // rendera start_time
+  const screeningsWrap = document.querySelector(".movieDateAndTime");
+
+  if (screeningsData.data.length === 0) {
+    screeningsWrap.textContent = "Inga kommande visningar";
+    return;
+  }
+
+  screeningsData.data.forEach((screening) => {
+    const p = document.createElement("p");
+    p.textContent = formatDateTime(screening.attributes.start_time);
+    screeningsWrap.appendChild(p);
+  });
+}
+
+async function showAverageRating() {
+  const res = await fetch(
+    `http://localhost:5080/movies/${id}/average-rating`
+  );
+  const data = await res.json();
+
+  const ratingEl = document.querySelector('.movieAverageRating');
+
+  if (data.average === null) {
+    ratingEl.textContent = '';
+  } else {
+    ratingEl.textContent = `${data.average.toFixed(1)} / 5 Rating`;
+  }
 }
 
 previousReviewPageBtn.addEventListener('click', () => {
@@ -58,6 +103,49 @@ function createReview(reviewData) {
   reviewList.append(reviewListItem);
 }
 
+
+async function submitReview(event) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const status = form.querySelector('.reviewStatus');
+  const author = form.querySelector('.reviewName').value.trim();
+  const rating = Number(form.querySelector('.reviewRatingInput').value);
+  const comment = form.querySelector('.reviewCommentInput').value.trim();
+
+  if (!author || !comment || !rating) {
+    status.textContent = 'Fyll i alla fält.';
+    return;
+  }
+
+  status.textContent = 'Skickar...';
+
+  try {
+    const response = await fetch('/reviews', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        author,
+        rating,
+        comment,
+        movie: id,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Något gick fel');
+    }
+
+    createReview({ author, rating, comment });
+    form.reset();
+    status.textContent = 'Tack för din recension!';
+  } catch (error) {
+    status.textContent = 'Kunde inte skicka recension. Försök igen.';
+  }
+}
+
 async function loadMovieReviews() {
   const response = await fetch('/reviews/' + id + "?page=" + currentReviewPage);
   const reviews = await response.json();
@@ -90,3 +178,7 @@ function renderPreviousReviewPage() {
 
 loadMovie();
 renderMovieReviews();
+showAverageRating();
+
+const reviewForm = document.querySelector('.movieReviewForm');
+reviewForm.addEventListener('submit', submitReview);
