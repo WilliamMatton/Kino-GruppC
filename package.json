@@ -11,7 +11,7 @@
     "watch-sass": "sass --watch --no-source-map src/main.scss static/output.css",
     "build": "concurrently \"npm run watch-sass\" \"npm start\"",
     "start": "node server.js",
-    "test": "jest"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "dependencies": {
     "concurrently": "^9.2.1",
@@ -20,5 +20,9 @@
     "jest": "^30.2.0",
     "sass": "^1.96.0",
     "supertest": "^7.2.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/__tests__/**/*.test.js"]
   }
 }

@@ -1,16 +1,17 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
+const page = params.get('page');
 
 const reviewList = document.querySelector('.movieReviewList');
 const previousReviewPageBtn = document.querySelector('.previousReviewPageBtn');
 const nextReviewPageBtn = document.querySelector('.nextReviewPageBtn');
 
 let totalReviewPages = 0;
-let currentReviewPage = 1;
+let currentReviewPage = page;
 
 async function loadMovie() {
   const response = await fetch(
-    `http://localhost:5080/movies/` + id
+    `/movies/` + id
   );
   const movie = await response.json();
   
@@ -58,7 +59,7 @@ function createReview(reviewData) {
 }
 
 async function loadMovieReviews() {
-  const response = await fetch('http://localhost:5080/reviews/' + id + "?page=" + currentReviewPage);
+  const response = await fetch('/reviews/' + id + "?page=" + currentReviewPage);
   const reviews = await response.json();
   totalReviewPages = reviews.meta.pagination.pageCount;
   return reviews.data;
