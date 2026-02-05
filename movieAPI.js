@@ -78,22 +78,18 @@ async function getMovieRating(movieId) {
   const json = await res.json();
   const reviews = json.data;
 
-  if (reviews.length >= 5) {
-    const avg =
-      reviews.reduce((sum, r) => sum + r.attributes.rating, 0) /
-      reviews.length;
-
+ 
+  if (reviews.length < 5) {
+    const imdbRating = await getImdbRating(movieId);
     return {
-      source: 'reviews',
-      rating: Number(avg.toFixed(1)),
+      source: 'imdb',
+      rating: imdbRating,
     };
   }
 
-  const imdbRating = await getImdbRating(movieId);
-
   return {
-    source: 'imdb',
-    rating: imdbRating,
+    source: 'reviews',
+    rating: null,
   };
 }
 

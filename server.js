@@ -28,6 +28,7 @@ server.get('/reviews/:id', async (req, res) => {
 server.get('/movies/:id/rating', async (req, res) => {
   const rating = await richardsAPI.getMovieRating(req.params.id);
   res.status(200).json(rating);
+});
 // kommande visningar för en film
 server.get('/screenings', async(req, res) => {
   const movieId = req.query.movieId;

@@ -178,13 +178,15 @@ function renderPreviousReviewPage() {
 async function loadMovieRating() {
   const res = await fetch(`/movies/${id}/rating`);
   const rating = await res.json();
+  if (rating.rating === null) return;
 
   const ratingEl = document.createElement('p');
+  ratingEl.classList.add('movieRating');
   ratingEl.textContent =
-    `Betyg: ${rating.rating} (${rating.source})`;
+    `Rating: ${rating.rating} (${rating.source})`;
 
-  document.querySelector('.movie-intro')
-    .appendChild(ratingEl);
+  const movieImg = document.querySelector('.movieImg');
+  movieImg.insertAdjacentElement('afterend', ratingEl);
 }
 
 loadMovie();
