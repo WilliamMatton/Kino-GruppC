@@ -2,7 +2,7 @@ import { describe, expect, test } from '@jest/globals';
 import { getReviewsWithPagination } from '../static/pagination.js';
 
 const mockAPI = {
-  getReviewsForMovie: (id) => {
+  getReviewsForMovie: () => {
     return [
       {
         "id": 1607,
@@ -97,7 +97,7 @@ const mockAPI = {
 }
 
 describe('Movie review pagination', () => {
-  let reviews = mockAPI.getReviewsForMovie(1);
+  let reviews = mockAPI.getReviewsForMovie();
 
   test('Page 1 returns 5 reviews', () => {
     let paginatedReviews = getReviewsWithPagination(reviews, 5, 1);
