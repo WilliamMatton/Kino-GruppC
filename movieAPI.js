@@ -104,3 +104,39 @@ const richardsAPI = {
 }
 
 export default richardsAPI;
+export async function topFiveMovies(adapter) {
+  const movies = (await adapter.getMovies()) || [];
+  const cutoffDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+  const scored = [];
+
+  for (const movie of movies) {
+    const reviews = (await adapter.loadReviewsForMovie(movie.id)) || [];
+
+    const recent = [];
+    for (const review of reviews) {
+      const created = review && review.attributes && review.attributes.createdAt;
+      if (created && new Date(created) >= cutoffDate) {
+        recent.push(review);
+      }
+    }
+
+    if (recent.length === 0) {
+      continue;
+    }
+
+    let total = 0;
+    for (const review of recent) {
+      total += review.attributes.rating;
+    }
+    const average = total / recent.length;
+    scored.push({ movie, average });
+  }
+
+  scored.sort((a, b) => b.average - a.average);
+
+  const top = [];
+  for (let i = 0; i < scored.length && i < 5; i++) {
+    top.push(scored[i].movie);
+  }
+  return top;
+}
