@@ -62,12 +62,21 @@ async function createReview(review) {
   return json;
 }
 
-async function getUpcomingScreeningsForMovie(movieId) {
-  const now = new Date().toISOString();
-  const url = MOVIE_API + `/screenings?filters[movie]=${movieId}` + `&filters[start_time][$gte]=${encodeURIComponent(now)}` + `&sort=start_time:asc`;
+export async function getUpcomingScreeningsForMovie(movieId, nowDateTime = new Date().toISOString()) {
+  const url =
+    MOVIE_API + `/screenings?filters[movie]=${movieId}` + 
+    `&filters[start_time][$gte]=${encodeURIComponent(nowDateTime)}` + `&sort=start_time:asc`;
+
   const res = await fetch(url);
   const json = await res.json();
-  return json.data;
+  const now = new Date(nowDateTime);
+
+  const filtered = (json.data || []).filter(screeningObject => {
+    const start = new Date(screeningObject.attributes.start_time);
+    return start >= now;
+  });
+
+  return filtered;
 }
 
 const cmsAdapter = {
