@@ -158,7 +158,7 @@ async function submitReview(event) {
 }
 
 async function loadReviewsForPage() {
-  const paginatedReviews = await getReviewsWithPagination(reviews, 5, currentReviewPage);
+  const paginatedReviews = getReviewsWithPagination(reviews, 5, currentReviewPage);
   totalReviewPages = Math.ceil(reviews.length / 5);
   return paginatedReviews;
 }

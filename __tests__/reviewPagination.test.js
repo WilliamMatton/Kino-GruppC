@@ -102,12 +102,12 @@ describe('Movie review pagination', () => {
   let reviews = mockAPI.getReviewsForMovie(1).data;
 
   test('Page 1 returns 5 reviews', async () => {
-    let paginatedReviews = await getReviewsWithPagination(reviews, 5, 1);
+    let paginatedReviews = getReviewsWithPagination(reviews, 5, 1);
     expect(paginatedReviews.length).toBe(5);
   });
 
   test('Page 2 returns 3 reviews', async () => {
-    let paginatedReviews = await getReviewsWithPagination(reviews, 5, 2);
+    let paginatedReviews = getReviewsWithPagination(reviews, 5, 2);
     expect(paginatedReviews.length).toBe(3);
   });
 });
