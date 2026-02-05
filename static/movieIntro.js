@@ -13,8 +13,8 @@ let currentReviewPage = page;
 
 async function loadMovieReviews() {
   const response = await fetch('/reviews/' + id);
-  const reviews = await response.json();
-  return reviews;
+  const allReviews = await response.json();
+  return allReviews;
 }
 
 const reviews = await loadMovieReviews();
@@ -164,13 +164,13 @@ async function loadReviewsForPage() {
 }
 
 async function renderMovieReviews() {
-  const reviews = await loadReviewsForPage();
-  if(reviews.length === 0) return;
+  const pageReviews = await loadReviewsForPage();
+  if(pageReviews.length === 0) return;
   
   reviewList.innerHTML = '';
 
-  for(let i = 0; i < reviews.length; i++) {
-    createReview(reviews[i].attributes);
+  for(let i = 0; i < pageReviews.length; i++) {
+    createReview(pageReviews[i].attributes);
   }
 }
 
