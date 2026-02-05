@@ -11,14 +11,6 @@ const nextReviewPageBtn = document.querySelector('.nextReviewPageBtn');
 let totalReviewPages = 0;
 let currentReviewPage = page;
 
-async function loadMovieReviews() {
-  const response = await fetch('/reviews/' + id);
-  const allReviews = await response.json();
-  return allReviews;
-}
-
-const reviews = await loadMovieReviews();
-
 // konvertera tid, som exempelvis 19:00, och lokal tid
 function formatDateTime(isoString) {
   const newDate = new Date(isoString);
@@ -151,20 +143,26 @@ async function submitReview(event) {
     createReview({ author, rating, comment });
     form.reset();
     status.textContent = 'Tack för din recension!';
+    allReviews = await loadAllMovieReviews();
+    renderReviewsForPage();
   } catch (error) {
     console.log(error);
     status.textContent = 'Kunde inte skicka recension. Försök igen.';
   }
 }
 
-async function loadReviewsForPage() {
-  const paginatedReviews = getReviewsWithPagination(reviews, 5, currentReviewPage);
-  totalReviewPages = Math.ceil(reviews.length / 5);
-  return paginatedReviews;
+async function loadAllMovieReviews() {
+  const response = await fetch('/reviews/' + id);
+  const movieReviews = await response.json();
+  return movieReviews;
 }
 
-async function renderMovieReviews() {
-  const pageReviews = await loadReviewsForPage();
+let allReviews = await loadAllMovieReviews();
+
+function renderReviewsForPage() {
+  const pageReviews = getReviewsWithPagination(allReviews, 5, currentReviewPage);
+  totalReviewPages = Math.ceil(allReviews.length / 5);
+
   if(pageReviews.length === 0) return;
   
   reviewList.innerHTML = '';
@@ -177,17 +175,17 @@ async function renderMovieReviews() {
 function renderNextReviewPage() {
   if(currentReviewPage === totalReviewPages) return;
   currentReviewPage++;
-  renderMovieReviews();
+  renderReviewsForPage();
 }
 
 function renderPreviousReviewPage() {
   if(currentReviewPage === 1) return;
   currentReviewPage--;
-  renderMovieReviews();
+  renderReviewsForPage();
 }
 
 loadMovie();
-renderMovieReviews();
+renderReviewsForPage();
 showAverageRating();
 
 const reviewForm = document.querySelector('.movieReviewForm');
