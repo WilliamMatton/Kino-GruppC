@@ -22,7 +22,7 @@ server.get('/movies/:id/average-rating', async (req, res) => {
 });
 
 server.get('/reviews/:id', async (req, res) => {
-	const reviews = await richardsAPI.getReviewsForMovie(req.params.id);
+	const reviews = await richardsAPI.getReviewsForMovie(req.params.id, req.query.page);
 	res.status(200).json(reviews);
 });
 

@@ -1,5 +1,3 @@
-import { getReviewsWithPagination } from './pagination.js';
-
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 const page = params.get('page');
@@ -143,49 +141,44 @@ async function submitReview(event) {
     createReview({ author, rating, comment });
     form.reset();
     status.textContent = 'Tack för din recension!';
-    allReviews = await loadAllMovieReviews();
-    renderReviewsForPage();
   } catch (error) {
     console.log(error);
     status.textContent = 'Kunde inte skicka recension. Försök igen.';
   }
 }
 
-async function loadAllMovieReviews() {
-  const response = await fetch('/reviews/' + id);
-  const movieReviews = await response.json();
-  return movieReviews;
+async function loadMovieReviews() {
+  const response = await fetch('/reviews/' + id + "?page=" + currentReviewPage);
+  const reviews = await response.json();
+  totalReviewPages = reviews.meta.pagination.pageCount;
+  return reviews.data;
 }
 
-let allReviews = await loadAllMovieReviews();
-
-function renderReviewsForPage() {
-  const pageReviews = getReviewsWithPagination(allReviews, 5, currentReviewPage);
-  totalReviewPages = Math.ceil(allReviews.length / 5);
-
-  if(pageReviews.length === 0) return;
+async function renderMovieReviews() {
+  const reviews = await loadMovieReviews();
+  if(reviews.length === 0) return;
   
   reviewList.innerHTML = '';
 
-  for(let i = 0; i < pageReviews.length; i++) {
-    createReview(pageReviews[i].attributes);
+  for(let i = 0; i < reviews.length; i++) {
+    createReview(reviews[i].attributes);
   }
 }
 
 function renderNextReviewPage() {
   if(currentReviewPage === totalReviewPages) return;
   currentReviewPage++;
-  renderReviewsForPage();
+  renderMovieReviews();
 }
 
 function renderPreviousReviewPage() {
   if(currentReviewPage === 1) return;
   currentReviewPage--;
-  renderReviewsForPage();
+  renderMovieReviews();
 }
 
 loadMovie();
-renderReviewsForPage();
+renderMovieReviews();
 showAverageRating();
 
 const reviewForm = document.querySelector('.movieReviewForm');
