@@ -1,3 +1,5 @@
+import { getReviewsWithPagination } from './pagination.js';
+
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 const page = params.get('page');
@@ -8,6 +10,14 @@ const nextReviewPageBtn = document.querySelector('.nextReviewPageBtn');
 
 let totalReviewPages = 0;
 let currentReviewPage = page;
+
+async function loadMovieReviews() {
+  const response = await fetch('/reviews/' + id);
+  const reviews = await response.json();
+  return reviews;
+}
+
+const reviews = await loadMovieReviews();
 
 // konvertera tid, som exempelvis 19:00, och lokal tid
 function formatDateTime(isoString) {
@@ -147,15 +157,14 @@ async function submitReview(event) {
   }
 }
 
-async function loadMovieReviews() {
-  const response = await fetch('/reviews/' + id + "?page=" + currentReviewPage);
-  const reviews = await response.json();
-  totalReviewPages = reviews.meta.pagination.pageCount;
-  return reviews.data;
+async function loadReviewsForPage() {
+  const paginatedReviews = await getReviewsWithPagination(reviews, 5, currentReviewPage);
+  totalReviewPages = Math.ceil(reviews.length / 5);
+  return paginatedReviews;
 }
 
 async function renderMovieReviews() {
-  const reviews = await loadMovieReviews();
+  const reviews = await loadReviewsForPage();
   if(reviews.length === 0) return;
   
   reviewList.innerHTML = '';
