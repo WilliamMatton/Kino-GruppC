@@ -30,7 +30,7 @@ fetch('https://plankton-app-xhkom.ondigitalocean.app/api/movies')
       card.classList.add('card');
 
       card.addEventListener('click', () => {
-        window.location.href = `/movieIntro.html?id=${movie.id}`;
+        window.location.href = `/movieIntro.html?id=${movie.id}&page=1`;
       });
       card.style.cursor = 'pointer';
       card.dataset.id = movie.id;

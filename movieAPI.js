@@ -35,11 +35,29 @@ async function getReviewrating(rating){
   return json.data;
 }
 
-async function getReviewsForMovie(movieID, page) {
-  const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID
-    + '&pagination[pageSize]=5&pagination[page]=' + page);
-  const json = await res.json();
-  return json;
+async function getReviewsForMovie(movieID) {
+  let allReviews = [];
+  let page = 1;
+  let hasMorePages = true;
+
+  const meta = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID);
+  const metaJson = await meta.json();
+
+  while (hasMorePages) {
+    const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID + '&sort=createdAt:desc' + '&pagination[page]=' + page);
+    const json = await res.json();
+    allReviews = allReviews.concat(json.data || []);
+    
+    if (json.meta?.pagination?.pageCount && page >= json.meta.pagination.pageCount) {
+      hasMorePages = false;
+    }
+    page++;
+  }
+
+  return {
+    data: allReviews,
+    meta: metaJson
+  };
 }
 
 async function createReview(review) {
@@ -62,12 +80,21 @@ async function createReview(review) {
   return json;
 }
 
-async function getUpcomingScreeningsForMovie(movieId) {
-  const now = new Date().toISOString();
-  const url = MOVIE_API + `/screenings?filters[movie]=${movieId}` + `&filters[start_time][$gte]=${encodeURIComponent(now)}` + `&sort=start_time:asc`;
+export async function getUpcomingScreeningsForMovie(movieId, nowDateTime = new Date().toISOString()) {
+  const url =
+    MOVIE_API + `/screenings?filters[movie]=${movieId}` + 
+    `&filters[start_time][$gte]=${encodeURIComponent(nowDateTime)}` + `&sort=start_time:asc`;
+
   const res = await fetch(url);
   const json = await res.json();
-  return json.data;
+  const now = new Date(nowDateTime);
+
+  const filtered = (json.data || []).filter(screeningObject => {
+    const start = new Date(screeningObject.attributes.start_time);
+    return start >= now;
+  });
+
+  return filtered;
 }
 
 async function getMovieRating(movieId) {

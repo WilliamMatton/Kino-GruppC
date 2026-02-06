@@ -20,8 +20,9 @@ server.get('/movies/:id/average-rating', async (req, res) => {
   const avg = await averageMovieGrade(cmsAdapter, req.params.id);
   res.json({ average: avg });
 });
+
 server.get('/reviews/:id', async (req, res) => {
-	const reviews = await richardsAPI.getReviewsForMovie(req.params.id, req.query.page?? 1);
+	const reviews = await richardsAPI.getReviewsForMovie(req.params.id);
 	res.status(200).json(reviews);
 });
 
