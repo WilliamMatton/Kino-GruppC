@@ -40,8 +40,11 @@ async function getReviewsForMovie(movieID) {
   let page = 1;
   let hasMorePages = true;
 
+  const meta = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID);
+  const metaJson = await meta.json();
+
   while (hasMorePages) {
-    const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID + '&pagination[page]=' + page);
+    const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID + '&sort=createdAt:desc' + '&pagination[page]=' + page);
     const json = await res.json();
     allReviews = allReviews.concat(json.data || []);
     
@@ -51,7 +54,10 @@ async function getReviewsForMovie(movieID) {
     page++;
   }
 
-  return allReviews;
+  return {
+    data: allReviews,
+    meta: metaJson
+  };
 }
 
 async function createReview(review) {

@@ -160,8 +160,8 @@ async function loadAllMovieReviews() {
 let allReviews = await loadAllMovieReviews();
 
 function renderReviewsForPage() {
-  const pageReviews = getReviewsWithPagination(allReviews, 5, currentReviewPage);
-  totalReviewPages = Math.ceil(allReviews.length / 5);
+  const pageReviews = getReviewsWithPagination(allReviews.data, 5, currentReviewPage);
+  totalReviewPages = Math.ceil(allReviews.data.length / 5);
 
   if(pageReviews.length === 0) return;
   

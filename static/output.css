@@ -428,6 +428,69 @@ body {
     font-size: 13px;
   }
 }
+.popularMovies {
+  max-width: 1420px;
+  margin: 24px auto;
+  padding: 0 24px 32px;
+}
+
+.sectionTitle {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-strong);
+}
+
+.popularMoviesGrid {
+  display: flex;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.movieCard {
+  width: 185px;
+}
+
+.movieLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.movieCard .imageCard {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.movieCard .container {
+  margin-top: 6px;
+}
+
+.movieCard .cardTitle {
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.movieCard .cardRating {
+  margin: 4px 0 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .popularMovies {
+    padding: 0 16px 24px;
+  }
+  .popularMoviesGrid {
+    gap: 10px;
+  }
+  .movieCard {
+    width: 158px;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -440,6 +503,14 @@ body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   color: #ffffff;
+}
+
+.footerPlaceholder {
+  padding: 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+  border-top: 2px solid #ddd;
+  margin-top: auto;
 }
 
 .contactContainer {
