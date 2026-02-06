@@ -20,22 +20,13 @@ async function getReviews() {
   return text.data;
 }
 
-async function loadReviewsForMovie(movieId) {
-  const res = await fetch(
-    `${REVIEWS_API}?filters[movie]=${movieId}`
-  );
-  const json = await res.json();
-
-  return json.data ?? [];
-}
-
 async function getReviewrating(rating){
   const res = await fetch(REVIEWS_API + '/reviews/' + rating);
   const json = await res.json();
   return json.data;
 }
 
-async function getReviewsForMovie(movieID) {
+export async function getReviewsForMovie(movieID) {
   let allReviews = [];
   let page = 1;
   let hasMorePages = true;
@@ -97,15 +88,9 @@ export async function getUpcomingScreeningsForMovie(movieId, nowDateTime = new D
   return filtered;
 }
 
-const cmsAdapter = {
-  loadReviewsForMovie,
-};
-
-export {cmsAdapter};
-
-export async function averageMovieGrade(cmsAdapter, movieId) {
-  const reviews = await cmsAdapter.loadReviewsForMovie(movieId);
-  
+export async function averageMovieGrade(getReviewsForMovie, movieId) {
+  const res = await getReviewsForMovie(movieId);
+  const reviews = res.data;
   if (!reviews || reviews.length < 5) {
     return null;
   }
@@ -126,7 +111,6 @@ const richardsAPI = {
   getReviewsForMovie,
   createReview,
   getUpcomingScreeningsForMovie,
-  loadReviewsForMovie,
 }
 
 export default richardsAPI;
