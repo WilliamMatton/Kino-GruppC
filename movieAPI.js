@@ -35,10 +35,23 @@ async function getReviewrating(rating){
   return json.data;
 }
 
-async function getReviewsForMovie(movieID, page) {
-  const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID + '&pagination[pageSize]=5&pagination[page]=' + page + '&sort=id:asc');
-  const json = await res.json();
-  return json;
+async function getReviewsForMovie(movieID) {
+  let allReviews = [];
+  let page = 1;
+  let hasMorePages = true;
+
+  while (hasMorePages) {
+    const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID + '&pagination[page]=' + page);
+    const json = await res.json();
+    allReviews = allReviews.concat(json.data || []);
+    
+    if (json.meta?.pagination?.pageCount && page >= json.meta.pagination.pageCount) {
+      hasMorePages = false;
+    }
+    page++;
+  }
+
+  return allReviews;
 }
 
 async function createReview(review) {
