@@ -1,6 +1,6 @@
 import express from 'express';
 import richardsAPI from './movieAPI.js';
-import { averageMovieGrade, cmsAdapter } from './movieAPI.js';
+import { averageMovieGrade, getReviewsForMovie } from './movieAPI.js';
 
 const server = express();
 
@@ -17,7 +17,7 @@ server.get('/movies/:id', async(req, res) => {
 });
 
 server.get('/movies/:id/average-rating', async (req, res) => {
-  const avg = await averageMovieGrade(cmsAdapter, req.params.id);
+  const avg = await averageMovieGrade(getReviewsForMovie, req.params.id);
   res.json({ average: avg });
 });
 
