@@ -129,15 +129,6 @@ async function getImdbRating(movieId) {
   return 7.0;
 }
 
-
-
-const cmsAdapter = {
-  loadReviewsForMovie,
-};
-
-export {cmsAdapter};
-
-
   
 export async function averageMovieGrade(getReviewsForMovie, movieId) {
   const res = await getReviewsForMovie(movieId);
@@ -163,7 +154,6 @@ const richardsAPI = {
   createReview,
   getUpcomingScreeningsForMovie,
   getMovieRating,
-  loadReviewsForMovie,
 }
 
 export default richardsAPI;
