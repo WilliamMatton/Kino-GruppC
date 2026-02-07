@@ -7,6 +7,11 @@ GET /movies/:id
 Hämtar en specifik film.
 Parametrar: id – filmens id.
 
+GET /movies/:id/rating
+Hämtar genomsnittsligt betyg för en specifik film
+Parametrar: id- filmens id
+Svar: { "average": number }
+
 GET /reviews/:id
 Hämtar alla recensioner för en film.
 Sorteras i fallande ordning på när recensionerna skapades
