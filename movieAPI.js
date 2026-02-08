@@ -88,6 +88,48 @@ export async function getUpcomingScreeningsForMovie(movieId, nowDateTime = new D
   return filtered;
 }
 
+async function getMovieRating(movieId) {
+  const res = await fetch(
+    MOVIE_API +
+    `/reviews?filters[movie]=${movieId}&pagination[pageSize]=100`
+  );
+  const json = await res.json();
+  const reviews = json.data;
+
+ 
+  if (reviews.length < 5) {
+    const imdbRating = await getImdbRating(movieId);
+    return {
+      source: 'imdb',
+      rating: imdbRating,
+    };
+  }
+
+  return {
+    source: 'reviews',
+    rating: null,
+  };
+}
+
+async function getImdbRating(movieId) {
+
+  const movieRes = await fetch(`${MOVIE_API}/movies/${movieId}`);
+  const movieJson = await movieRes.json();
+  const title = movieJson.data.attributes.title;
+
+  const res = await fetch(
+    `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=84cbe918`
+  );
+  const json = await res.json();
+
+  if (json.Response === "True" && json.imdbRating !== "N/A") {
+    return Number(json.imdbRating);
+  }
+
+  return 7.0;
+}
+
+  
 export async function averageMovieGrade(getReviewsForMovie, movieId) {
   const res = await getReviewsForMovie(movieId);
   const reviews = res.data;
@@ -111,6 +153,7 @@ const richardsAPI = {
   getReviewsForMovie,
   createReview,
   getUpcomingScreeningsForMovie,
+  getMovieRating,
 }
 
 export default richardsAPI;
