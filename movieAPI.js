@@ -88,6 +88,48 @@ export async function getUpcomingScreeningsForMovie(movieId, nowDateTime = new D
   return filtered;
 }
 
+async function getMovieRating(movieId) {
+  const res = await fetch(
+    MOVIE_API +
+    `/reviews?filters[movie]=${movieId}&pagination[pageSize]=100`
+  );
+  const json = await res.json();
+  const reviews = json.data;
+
+ 
+  if (reviews.length < 5) {
+    const imdbRating = await getImdbRating(movieId);
+    return {
+      source: 'imdb',
+      rating: imdbRating,
+    };
+  }
+
+  return {
+    source: 'reviews',
+    rating: null,
+  };
+}
+
+async function getImdbRating(movieId) {
+
+  const movieRes = await fetch(`${MOVIE_API}/movies/${movieId}`);
+  const movieJson = await movieRes.json();
+  const title = movieJson.data.attributes.title;
+
+  const res = await fetch(
+    `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=84cbe918`
+  );
+  const json = await res.json();
+
+  if (json.Response === "True" && json.imdbRating !== "N/A") {
+    return Number(json.imdbRating);
+  }
+
+  return 7.0;
+}
+
+  
 export async function averageMovieGrade(getReviewsForMovie, movieId) {
   const res = await getReviewsForMovie(movieId);
   const reviews = res.data;
@@ -111,6 +153,43 @@ const richardsAPI = {
   getReviewsForMovie,
   createReview,
   getUpcomingScreeningsForMovie,
+  getMovieRating,
 }
 
 export default richardsAPI;
+export async function topFiveMovies(adapter) {
+  const movies = (await adapter.getMovies()) || [];
+  const cutoffDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+  const scored = [];
+
+  for (const movie of movies) {
+    const reviews = (await adapter.loadReviewsForMovie(movie.id)) || [];
+
+    const recent = [];
+    for (const review of reviews) {
+      const created = review && review.attributes && review.attributes.createdAt;
+      if (created && new Date(created) >= cutoffDate) {
+        recent.push(review);
+      }
+    }
+
+    if (recent.length === 0) {
+      continue;
+    }
+
+    let total = 0;
+    for (const review of recent) {
+      total += review.attributes.rating;
+    }
+    const average = total / recent.length;
+    scored.push({ movie, average });
+  }
+
+  scored.sort((a, b) => b.average - a.average);
+
+  const top = [];
+  for (let i = 0; i < scored.length && i < 5; i++) {
+    top.push(scored[i].movie);
+  }
+  return top;
+}

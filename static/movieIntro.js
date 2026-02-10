@@ -184,9 +184,25 @@ function renderPreviousReviewPage() {
   renderReviewsForPage();
 }
 
+async function loadMovieRating() {
+  const res = await fetch(`/movies/${id}/rating`);
+  const rating = await res.json();
+
+  if (rating.rating == null) return;
+
+  const ratingEl = document.createElement('p');
+  ratingEl.classList.add('movieRating');
+  ratingEl.textContent = `Rating: ${rating.rating} (${rating.source})`;
+
+  const movieImg = document.querySelector('.movieImg');
+  movieImg.insertAdjacentElement('afterend', ratingEl);
+}
+
+
 loadMovie();
 renderReviewsForPage();
 showAverageRating();
+loadMovieRating();
 
 const reviewForm = document.querySelector('.movieReviewForm');
 reviewForm.addEventListener('submit', submitReview);
