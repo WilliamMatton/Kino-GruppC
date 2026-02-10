@@ -47,7 +47,7 @@ export async function getReviewsForMovie(movieID) {
 
   return {
     data: allReviews,
-    meta: metaJson
+    meta: metaJson.meta
   };
 }
 
