@@ -21,8 +21,6 @@ body {
 }
 
 .navbar {
-  display: block;
-  padding: 0;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -148,11 +146,6 @@ body {
     flex-wrap: wrap;
   }
 
-  .navActions .iconBtn[aria-label="Search"],
-  .navActions .btnPrimary {
-    display: none;
-  }
-
   .logoImg {
     height: 86px;
   }
@@ -203,24 +196,16 @@ body {
 
 @media (max-width: 540px) {
   .navContainer {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 8px;
-    padding-right: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .logo {
     order: 1;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
   }
 
   .navActions {
     order: 2;
-    margin-left: 0;
-    margin-right: 0;
   }
 }
 
