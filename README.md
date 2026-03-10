@@ -1,25 +1,29 @@
-**Detta är Github-repot för Grupp C**
+**API-ENDPOINTS**
+-----------------
+GET /movies
+Hämtar alla filmer.
 
-**Plats:** Planeten Proxima b
+GET /movies/:id
+Hämtar en specifik film.
+Parametrar: id – filmens id.
 
-Brainstorm figjam: https://www.figma.com/board/A7IJz9a5pRJBq4BiryvEAk/Nya-Kino-sidan?node-id=0-1&p=f&t=IwLQLdlYHv1Fw7oA-0
+GET /movies/:id/rating
+Hämtar genomsnittsligt betyg för en specifik film
+Parametrar: id- filmens id
+Svar: { "average": number }
 
-Figma design: https://www.figma.com/design/57SvVtV3rfDE9sH1FUPyRB/Proxima-B--Community-?node-id=0-1&p=f&t=hRDwhKUDLfvwLPk0-0
+GET /reviews/:id
+Hämtar alla recensioner för en film.
+Sorteras i fallande ordning på när recensionerna skapades
+Parametrar: id – filmens id.
 
-**Schema för möten:**
-- Möten sker på vardagar klockan 09:30 via Teams om möjligt
-- Måndagar efter klockan 14:00 är Joseph upptagen
+GET /screenings
+Hämtar kommande visningar för en film.
+Query (obligatorisk): movieId – filmens id.
+Fel: 400 Bad Request om movieId saknas.
 
-**Kommunikation:**
-- Teams för möten, Discord för skriftlig kommunikation
-
-**Tekniker och verktyg:**
-- SASS, Prettier
-- Alla namn(variabler/funktioner etc.) i koden skrivs i camelCase format.
-
-**Branches:**
-- All kod pushas till separata branches som sedan mergas till en dev-branch genom pull requests.
-- Från dev-branchen pushas koden sedan till en main-branch.
-
-**Regler för pull requests:**
-- Alla pull requests måste ha minst två reviews för att tillåtas en merge till dev-branch
+POST /reviews
+Skapar en ny recension.
+Body (JSON):
+{ "movieId": 1, "rating": 5, "comment": "Great movie!" }
+Svar: 201 Created, Fel: 500 Internal Server Error.
