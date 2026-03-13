@@ -1456,3 +1456,15 @@ body {
     padding: 40px 16px;
   }
 }
+#loginForm .form-control {
+    background: rgba(255, 255, 255, 0.05);
+  }
+#loginForm .btn-black {
+  background: #000000;
+  color: white;
+  border: none;
+  font-weight: 600;
+  font-size: 15px !important;
+  padding: 12px 24px !important;
+  border-radius: 8px;
+}
