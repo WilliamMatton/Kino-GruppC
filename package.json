@@ -1,7 +1,7 @@
 {
   "name": "kino-gruppc",
   "version": "1.0.0",
-  "description": "",
+  "description": "**API-ENDPOINTS**\r -----------------\r GET /movies\r Hämtar alla filmer.",
   "license": "ISC",
   "author": "",
   "type": "module",
@@ -24,6 +24,16 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "testMatch": ["**/__tests__/**/*.test.js"]
-  }
+    "testMatch": [
+      "**/__tests__/**/*.test.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilliamMatton/Kino-GruppC.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WilliamMatton/Kino-GruppC/issues"
+  },
+  "homepage": "https://github.com/WilliamMatton/Kino-GruppC#readme"
 }

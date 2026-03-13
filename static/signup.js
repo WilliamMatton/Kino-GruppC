@@ -271,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
       lastName: lastName,
       fullName: firstName + ' ' + lastName,
       email: email,
+      password: password,
       createdAt: new Date().toISOString(), // Tidsstämpel för när kontot skapades
     };
 
