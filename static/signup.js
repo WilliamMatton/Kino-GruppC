@@ -321,9 +321,9 @@ document.addEventListener('DOMContentLoaded', function () {
     form.classList.add('d-none');
     successMessage.classList.remove('d-none');
 
-    // Omdirigera till medlemssidan efter 2 sekunder
+    // Omdirigera till profilesidan efter 2 sekunder
     setTimeout(function () {
-      window.location.href = 'memberpage.html';
+    window.location.href = 'profile.html';
     }, 2000);
   });
 });
