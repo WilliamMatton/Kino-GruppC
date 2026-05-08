@@ -38,6 +38,14 @@ server.get('/screenings', async(req, res) => {
 
 });
 
+// kommande visningar för filmer
+server.get('/screeningsfilms', async(req, res) => {
+
+  const screening = await richardsAPI.getcomingMovies();
+  res.status(200).json({ data: screening });
+
+});
+
 server.post('/reviews', async (req, res) => {
 	try {
 		const review = await richardsAPI.createReview(req.body);
