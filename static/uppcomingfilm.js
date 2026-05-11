@@ -33,14 +33,14 @@
 // Create HTML for each showing
       function createCard(movie) {
       const attrs = movie.attributes || {};
-      const imageUrl = attrs.image && attrs.image.url ? attrs.image.url : '';
-      const title = attrs.title || 'Titel saknas';
+      const imageUrl = attrs.movie.data.attributes.image && attrs.movie.data.attributes.image.url ? attrs.movie.data.attributes.image.url : '';
+      const title = attrs.movie.data.attributes.title || 'Titel saknas';
       const card = document.createElement('div');
       card.classList.add('card');
-      card.addEventListener('click', () => {
+    /*  card.addEventListener('click', () => {
         window.location.href = `/movieIntro.html?id=${movie.id}`;
       });
-      card.style.cursor = 'pointer';
+      card.style.cursor = 'pointer';*/
       card.dataset.id = movie.id;
       card.dataset.name = title;
       card.dataset.img = imageUrl;

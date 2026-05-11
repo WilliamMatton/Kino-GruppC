@@ -71,7 +71,7 @@ async function getUpcomingScreeningsForMovie(movieId) {
   return json.data;
 }
 
-async function getcomingMovies() {
+export async function getcomingMovies() {
 
 const now = new Date().toISOString();
   const url = MOVIE_API + '/screenings?populate=movie' + `&filters[start_time][$gte]=${encodeURIComponent(now)}` + `&sort=start_time:asc`;
@@ -90,26 +90,7 @@ const now = new Date().toISOString();
     });
  return filtered;
 }
-// gamal function 
-/*async function getcomingMovies() {
 
-const now = new Date().toISOString();
-  const url = MOVIE_API + '/screenings?populate=movie&sort=start_time:asc';
-  const res = await fetch(url);
-  const json = await res.json();
-  
-  //ny configaration
-   const today = new Date();
-    const fiveDaysFromNow = new Date();
-    fiveDaysFromNow.setDate(today.getDate() + 5);
-
-    // Filtrera visningar: Nu -> 5 dagar framåt
-    const filtered = (json.data || []).filter(s => {
-        const screeningDate = new Date(s.attributes.start_time);
-        return screeningDate >= today && screeningDate <= fiveDaysFromNow;
-    });
- return filtered;
-}*/
 
 
 const cmsAdapter = {
