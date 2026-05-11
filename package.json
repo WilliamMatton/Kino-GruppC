@@ -1,7 +1,7 @@
 {
   "name": "kino-gruppc",
   "version": "1.0.0",
-  "description": "",
+  "description": "**API-ENDPOINTS**\r -----------------\r GET /movies\r Hämtar alla filmer.",
   "license": "ISC",
   "author": "",
   "type": "module",
@@ -14,11 +14,26 @@
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "dependencies": {
+    "bootstrap": "^5.3.8",
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",
     "express": "^5.2.1",
     "jest": "^30.2.0",
     "sass": "^1.96.0",
     "supertest": "^7.2.2"
-  }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/__tests__/**/*.test.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilliamMatton/Kino-GruppC.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WilliamMatton/Kino-GruppC/issues"
+  },
+  "homepage": "https://github.com/WilliamMatton/Kino-GruppC#readme"
 }

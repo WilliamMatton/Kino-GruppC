@@ -60,7 +60,7 @@ function renderTop(top){
 		el.innerHTML=''
 		
         const link = document.createElement('a')
-		link.href =`/movieIntro.html?id=${item.movie.id}`
+		link.href =`/movieIntro.html?id=${item.movie.id}&page=1`
 		link.className ='movieLink'
 
 		const img = document.createElement('img')

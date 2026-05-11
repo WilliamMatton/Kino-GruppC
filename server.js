@@ -1,6 +1,6 @@
 import express from 'express';
 import richardsAPI from './movieAPI.js';
-import { averageMovieGrade, cmsAdapter } from './movieAPI.js';
+import { averageMovieGrade, getReviewsForMovie } from './movieAPI.js';
 
 const server = express();
 
@@ -17,14 +17,19 @@ server.get('/movies/:id', async(req, res) => {
 });
 
 server.get('/movies/:id/average-rating', async (req, res) => {
-  const avg = await averageMovieGrade(cmsAdapter, req.params.id);
+  const avg = await averageMovieGrade(getReviewsForMovie, req.params.id);
   res.json({ average: avg });
 });
+
 server.get('/reviews/:id', async (req, res) => {
-	const reviews = await richardsAPI.getReviewsForMovie(req.params.id, req.query.page?? 1);
+	const reviews = await richardsAPI.getReviewsForMovie(req.params.id);
 	res.status(200).json(reviews);
 });
 
+server.get('/movies/:id/rating', async (req, res) => {
+  const rating = await richardsAPI.getMovieRating(req.params.id);
+  res.status(200).json(rating);
+});
 // kommande visningar för en film
 server.get('/screenings', async(req, res) => {
   const movieId = req.query.movieId;

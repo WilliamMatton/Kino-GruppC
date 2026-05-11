@@ -20,27 +20,35 @@ async function getReviews() {
   return text.data;
 }
 
-async function loadReviewsForMovie(movieId) {
-  const res = await fetch(
-    `${REVIEWS_API}?filters[movie]=${movieId}`
-  );
-  const json = await res.json();
-
-  return json.data ?? [];
-}
-
 async function getReviewrating(rating){
   const res = await fetch(REVIEWS_API + '/reviews/' + rating);
   const json = await res.json();
   return json.data;
 }
 
-async function getReviewsForMovie(movieID, page) {
-  const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID
-    + '&sort=createdAt:desc'
-    + '&pagination[pageSize]=5&pagination[page]=' + page);
-  const json = await res.json();
-  return json;
+export async function getReviewsForMovie(movieID) {
+  let allReviews = [];
+  let page = 1;
+  let hasMorePages = true;
+
+  const meta = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID);
+  const metaJson = await meta.json();
+
+  while (hasMorePages) {
+    const res = await fetch(MOVIE_API + '/reviews?filters[movie]=' + movieID + '&sort=createdAt:desc' + '&pagination[page]=' + page);
+    const json = await res.json();
+    allReviews = allReviews.concat(json.data || []);
+    
+    if (json.meta?.pagination?.pageCount && page >= json.meta.pagination.pageCount) {
+      hasMorePages = false;
+    }
+    page++;
+  }
+
+  return {
+    data: allReviews,
+    meta: metaJson.meta
+  };
 }
 
 async function createReview(review) {
@@ -63,12 +71,21 @@ async function createReview(review) {
   return json;
 }
 
-async function getUpcomingScreeningsForMovie(movieId) {
-  const now = new Date().toISOString();
-  const url = MOVIE_API + `/screenings?filters[movie]=${movieId}` + `&filters[start_time][$gte]=${encodeURIComponent(now)}` + `&sort=start_time:asc`;
+export async function getUpcomingScreeningsForMovie(movieId, nowDateTime = new Date().toISOString()) {
+  const url =
+    MOVIE_API + `/screenings?filters[movie]=${movieId}` + 
+    `&filters[start_time][$gte]=${encodeURIComponent(nowDateTime)}` + `&sort=start_time:asc`;
+
   const res = await fetch(url);
   const json = await res.json();
-  return json.data;
+  const now = new Date(nowDateTime);
+
+  const filtered = (json.data || []).filter(screeningObject => {
+    const start = new Date(screeningObject.attributes.start_time);
+    return start >= now;
+  });
+
+  return filtered;
 }
 
 export async function getcomingMovies() {
@@ -91,17 +108,51 @@ const now = new Date().toISOString();
  return filtered;
 }
 
+async function getMovieRating(movieId) {
+  const res = await fetch(
+    MOVIE_API +
+    `/reviews?filters[movie]=${movieId}&pagination[pageSize]=100`
+  );
+  const json = await res.json();
+  const reviews = json.data;
 
+ 
+  if (reviews.length < 5) {
+    const imdbRating = await getImdbRating(movieId);
+    return {
+      source: 'imdb',
+      rating: imdbRating,
+    };
+  }
 
-const cmsAdapter = {
-  loadReviewsForMovie,
-};
+  return {
+    source: 'reviews',
+    rating: null,
+  };
+}
 
-export {cmsAdapter};
+async function getImdbRating(movieId) {
 
-export async function averageMovieGrade(cmsAdapter, movieId) {
-  const reviews = await cmsAdapter.loadReviewsForMovie(movieId);
+  const movieRes = await fetch(`${MOVIE_API}/movies/${movieId}`);
+  const movieJson = await movieRes.json();
+  const title = movieJson.data.attributes.title;
+
+  const res = await fetch(
+    `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=84cbe918`
+  );
+  const json = await res.json();
+
+  if (json.Response === "True" && json.imdbRating !== "N/A") {
+    return Number(json.imdbRating);
+  }
+
+  return 7.0;
+}
+
   
+export async function averageMovieGrade(getReviewsForMovie, movieId) {
+  const res = await getReviewsForMovie(movieId);
+  const reviews = res.data;
   if (!reviews || reviews.length < 5) {
     return null;
   }
@@ -123,7 +174,43 @@ const richardsAPI = {
   createReview,
   getUpcomingScreeningsForMovie,
   getcomingMovies,
-  loadReviewsForMovie,
+  getMovieRating,
 }
 
 export default richardsAPI;
+export async function topFiveMovies(adapter) {
+  const movies = (await adapter.getMovies()) || [];
+  const cutoffDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+  const scored = [];
+
+  for (const movie of movies) {
+    const reviews = (await adapter.loadReviewsForMovie(movie.id)) || [];
+
+    const recent = [];
+    for (const review of reviews) {
+      const created = review && review.attributes && review.attributes.createdAt;
+      if (created && new Date(created) >= cutoffDate) {
+        recent.push(review);
+      }
+    }
+
+    if (recent.length === 0) {
+      continue;
+    }
+
+    let total = 0;
+    for (const review of recent) {
+      total += review.attributes.rating;
+    }
+    const average = total / recent.length;
+    scored.push({ movie, average });
+  }
+
+  scored.sort((a, b) => b.average - a.average);
+
+  const top = [];
+  for (let i = 0; i < scored.length && i < 5; i++) {
+    top.push(scored[i].movie);
+  }
+  return top;
+}

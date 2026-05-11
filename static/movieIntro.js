@@ -1,12 +1,15 @@
+import { getReviewsWithPagination } from './pagination.js';
+
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
+const page = params.get('page');
 
 const reviewList = document.querySelector('.movieReviewList');
 const previousReviewPageBtn = document.querySelector('.previousReviewPageBtn');
 const nextReviewPageBtn = document.querySelector('.nextReviewPageBtn');
 
 let totalReviewPages = 0;
-let currentReviewPage = 1;
+let currentReviewPage = page;
 
 // konvertera tid, som exempelvis 19:00, och lokal tid
 function formatDateTime(isoString) {
@@ -22,7 +25,7 @@ function formatDateTime(isoString) {
 
 async function loadMovie() {
   const response = await fetch(
-    `http://localhost:5080/movies/` + id
+    `/movies/` + id
   );
   const movie = await response.json();
   
@@ -91,9 +94,9 @@ function createReview(reviewData) {
   reviewComment.classList.add('movieReviewComment');
   reviewAuthor.classList.add('movieReviewAuthor');
 
-  reviewRating.innerText = reviewData.attributes.rating + " av 5";
-  reviewComment.innerText = reviewData.attributes.comment;
-  reviewAuthor.innerText = reviewData.attributes.author;
+  reviewRating.innerText = reviewData.rating + " av 5";
+  reviewComment.innerText = reviewData.comment;
+  reviewAuthor.innerText = reviewData.author;
 
   review.append(reviewComment);
   review.append(reviewAuthor);
@@ -140,44 +143,66 @@ async function submitReview(event) {
     createReview({ author, rating, comment });
     form.reset();
     status.textContent = 'Tack för din recension!';
+    allReviews = await loadAllMovieReviews();
+    renderReviewsForPage();
   } catch (error) {
+    console.log(error);
     status.textContent = 'Kunde inte skicka recension. Försök igen.';
   }
 }
 
-async function loadMovieReviews() {
-  const response = await fetch('http://localhost:5080/reviews/' + id + "?page=" + currentReviewPage);
-  const reviews = await response.json();
-  totalReviewPages = reviews.meta.pagination.pageCount;
-  return reviews.data;
+async function loadAllMovieReviews() {
+  const response = await fetch('/reviews/' + id);
+  const movieReviews = await response.json();
+  return movieReviews;
 }
 
-async function renderMovieReviews() {
-  const reviews = await loadMovieReviews();
-  if(reviews.length === 0) return;
+let allReviews = await loadAllMovieReviews();
+
+function renderReviewsForPage() {
+  const pageReviews = getReviewsWithPagination(allReviews.data, 5, currentReviewPage);
+  totalReviewPages = Math.ceil(allReviews.data.length / 5);
+
+  if(pageReviews.length === 0) return;
   
   reviewList.innerHTML = '';
 
-  for(let i = 0; i < reviews.length; i++) {
-    createReview(reviews[i]);
+  for(let i = 0; i < pageReviews.length; i++) {
+    createReview(pageReviews[i].attributes);
   }
 }
 
 function renderNextReviewPage() {
   if(currentReviewPage === totalReviewPages) return;
   currentReviewPage++;
-  renderMovieReviews();
+  renderReviewsForPage();
 }
 
 function renderPreviousReviewPage() {
   if(currentReviewPage === 1) return;
   currentReviewPage--;
-  renderMovieReviews();
+  renderReviewsForPage();
 }
 
+async function loadMovieRating() {
+  const res = await fetch(`/movies/${id}/rating`);
+  const rating = await res.json();
+
+  if (rating.rating == null) return;
+
+  const ratingEl = document.createElement('p');
+  ratingEl.classList.add('movieRating');
+  ratingEl.textContent = `Rating: ${rating.rating} (${rating.source})`;
+
+  const movieImg = document.querySelector('.movieImg');
+  movieImg.insertAdjacentElement('afterend', ratingEl);
+}
+
+
 loadMovie();
-renderMovieReviews();
+renderReviewsForPage();
 showAverageRating();
+loadMovieRating();
 
 const reviewForm = document.querySelector('.movieReviewForm');
 reviewForm.addEventListener('submit', submitReview);
