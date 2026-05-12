@@ -27,3 +27,7 @@ Skapar en ny recension.
 Body (JSON):
 { "movieId": 1, "rating": 5, "comment": "Great movie!" }
 Svar: 201 Created, Fel: 500 Internal Server Error.
+
+GET /screeningsfilms
+Hämtar visningar för kommande fem dagar filmer
+för en film.
